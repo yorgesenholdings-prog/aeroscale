@@ -1,0 +1,15 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "backbonesuite-dev",
+      "runtimeExecutable": "/bin/zsh",
+      "runtimeArgs": [
+        "-lc",
+        "export PATH=\"/Users/dallinyorgesen/Desktop/BackboneSuite/.tools/node/bin:$PATH\"; cd /Users/dallinyorgesen/Desktop/BackboneSuite; exec npm run dev -- --port \"$PORT\""
+      ],
+      "port": 3000,
+      "autoPort": true
+    }
+  ]
+}

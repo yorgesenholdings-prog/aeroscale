@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cat /private/tmp/backbonesuite-scaffold/package.json)",
+      "Bash(mkdir -p /tmp/.bbs-tools-tmp2)",
+      "Read(//tmp/**)",
+      "Bash(curl -sL --max-time 120 -o node22.tar.gz https://nodejs.org/dist/v22.14.0/node-v22.14.0-darwin-x64.tar.gz)",
+      "Bash(tar -xzf node22.tar.gz)"
+    ]
+  }
+}

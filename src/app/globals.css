@@ -1,0 +1,118 @@
+@import "tailwindcss";
+
+/*
+ * AeroScale brand tokens.
+ * Approximate visual usage across the site: 60% white/light surfaces,
+ * 30% Slate Blue structure, 10% Electric Teal accents.
+ */
+:root {
+  --color-white: #ffffff;
+  --color-brand-slate: #3a4f66;
+  --color-brand-slate-dark: #2d4054;
+  --color-brand-teal: #00a896;
+  --color-brand-teal-dark: #008c7d;
+  --color-text-primary: #1f2933;
+  --color-text-muted: #5f6b76;
+  --color-surface: #f7f9fa;
+  --color-surface-muted: #eef2f5;
+  --color-border-subtle: #dce3e8;
+  --color-disabled: #e8edf0;
+  --color-teal-on-dark: #102a2a;
+  --color-error: #b3261e;
+  --color-error-surface: #fbeceb;
+
+  /*
+   * Accessible teal variants for TEXT (not backgrounds/icons-in-badges).
+   * The base --color-brand-teal fails WCAG AA as a text color on white
+   * (2.98:1) and on Slate Blue (2.83:1). These pass 4.5:1+ against the
+   * light surfaces and dark slate this site actually uses.
+   */
+  --color-teal-text: #007567;
+  --color-teal-text-dark: #005c52;
+  --color-teal-on-slate: #33c9b8;
+
+  --font-sans:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+@theme inline {
+  --color-white: var(--color-white);
+  --color-brand-slate: var(--color-brand-slate);
+  --color-brand-slate-dark: var(--color-brand-slate-dark);
+  --color-brand-teal: var(--color-brand-teal);
+  --color-brand-teal-dark: var(--color-brand-teal-dark);
+  --color-text-primary: var(--color-text-primary);
+  --color-text-muted: var(--color-text-muted);
+  --color-surface: var(--color-surface);
+  --color-surface-muted: var(--color-surface-muted);
+  --color-border-subtle: var(--color-border-subtle);
+  --color-disabled: var(--color-disabled);
+  --color-teal-on-dark: var(--color-teal-on-dark);
+  --color-teal-text: var(--color-teal-text);
+  --color-teal-text-dark: var(--color-teal-text-dark);
+  --color-teal-on-slate: var(--color-teal-on-slate);
+  --color-error: var(--color-error);
+  --color-error-surface: var(--color-error-surface);
+  --font-sans: var(--font-sans);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border-subtle);
+  }
+
+  body {
+    background: var(--color-white);
+    color: var(--color-text-primary);
+    font-family: var(--font-sans);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    color: var(--color-brand-slate);
+  }
+
+  a {
+    color: var(--color-teal-text);
+  }
+
+  /* Strong, visible focus ring across all interactive elements. */
+  :focus-visible {
+    outline: 2px solid var(--color-brand-teal);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  .container-page {
+    width: 100%;
+    max-width: 80rem;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+
+  @media (min-width: 640px) {
+    .container-page {
+      padding-inline: 2rem;
+    }
+  }
+}
