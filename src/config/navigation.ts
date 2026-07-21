@@ -1,9 +1,15 @@
-import { services } from "@/config/services";
+import { getServicesByCategory } from "@/config/services";
 import type { NavLink } from "@/types";
 
-export const serviceNavLinks: NavLink[] = services.map((service) => ({
+export const projectNavLinks: NavLink[] = getServicesByCategory("projects").map((service) => ({
   label: service.name,
-  href: `/services/${service.slug}`,
+  href: `/services/${service.category}/${service.slug}`,
+  description: service.shortDescription,
+}));
+
+export const supportNavLinks: NavLink[] = getServicesByCategory("support").map((service) => ({
+  label: service.name,
+  href: `/services/${service.category}/${service.slug}`,
   description: service.shortDescription,
 }));
 
@@ -20,13 +26,18 @@ export const primaryCta: NavLink = {
   href: "/contact",
 };
 
-export const footerServiceLinks: NavLink[] = serviceNavLinks;
-
 export const footerCompanyLinks: NavLink[] = [
   { label: "About", href: "/about" },
   { label: "Services", href: "/services" },
   { label: "Growth Scorecard", href: "/growth-scorecard" },
+  { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
+];
+
+export const footerServiceLinks: NavLink[] = [
+  { label: "All Services", href: "/services" },
+  { label: "Projects", href: "/services/projects" },
+  { label: "Support", href: "/services/support" },
 ];
 
 export const footerLegalLinks: NavLink[] = [

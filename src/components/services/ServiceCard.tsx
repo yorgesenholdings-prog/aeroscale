@@ -6,7 +6,7 @@ import type { ServiceDefinition } from "@/types";
 export function ServiceCard({ service }: { service: ServiceDefinition }) {
   return (
     <AnalyticsLink
-      href={`/services/${service.slug}`}
+      href={`/services/${service.category}/${service.slug}`}
       eventName="service_card_clicked"
       eventProperties={{ service: service.slug }}
       className="group flex flex-col rounded-xl border border-border-subtle bg-white p-6 shadow-sm transition-all hover:-translate-y-0.5 hover:border-teal-text hover:shadow-md"

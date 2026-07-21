@@ -13,7 +13,7 @@ export function Footer() {
   return (
     <footer className="bg-brand-slate text-white">
       <div className="container-page py-12 md:py-16">
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-4">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-3">
           <div className="md:col-span-1">
             <Logo variant="white" />
             <p className="mt-4 text-sm text-white/80">{siteConfig.tagline}</p>
@@ -37,11 +37,11 @@ export function Footer() {
             </ul>
           </nav>
 
-          <nav aria-label="Services" className="md:col-span-2">
+          <nav aria-label="Services" className="md:col-span-1">
             <h2 className="text-sm font-semibold uppercase tracking-wide text-white/60">
               Services
             </h2>
-            <ul className="mt-4 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
+            <ul className="mt-4 space-y-2.5">
               {footerServiceLinks.map((link) => (
                 <li key={link.href}>
                   <Link

@@ -85,7 +85,7 @@ export function ScorecardResultsView({ results }: { results: ScorecardComputedRe
             {recommendedServices.map((service) => (
               <Link
                 key={service.slug}
-                href={`/services/${service.slug}`}
+                href={`/services/${service.category}/${service.slug}`}
                 className="group flex items-center justify-between rounded-lg border border-border-subtle bg-white p-4 text-sm font-semibold text-brand-slate hover:border-teal-text hover:text-teal-text"
               >
                 {service.name}

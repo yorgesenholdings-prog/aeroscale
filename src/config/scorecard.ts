@@ -9,14 +9,14 @@ export const SCORECARD_ANSWER_OPTIONS: ScorecardAnswerOption[] = [
 ];
 
 export const scorecardCategories: ScorecardCategoryMeta[] = [
-  { key: "strategy", label: "Strategy & Planning", relatedServiceSlugs: ["business-strategy"] },
-  { key: "marketing", label: "Marketing & Lead Generation", relatedServiceSlugs: ["marketing", "advertising"] },
-  { key: "sales", label: "Sales & Follow-Up", relatedServiceSlugs: ["systems-automation"] },
-  { key: "operations", label: "Operations & Systems", relatedServiceSlugs: ["systems-automation", "sops-processes"] },
-  { key: "sops", label: "SOPs & Delegation", relatedServiceSlugs: ["sops-processes"] },
-  { key: "data", label: "Data & Reporting", relatedServiceSlugs: ["data-analytics"] },
-  { key: "ownerDependence", label: "Owner Dependence", relatedServiceSlugs: ["sops-processes", "recurring-business-support"] },
-  { key: "growthReadiness", label: "Growth Readiness", relatedServiceSlugs: ["business-strategy", "recurring-business-support"] },
+  { key: "strategy", label: "Strategy & Planning", relatedServiceSlugs: ["strategic-planning", "quarterly-planning"] },
+  { key: "marketing", label: "Marketing & Lead Generation", relatedServiceSlugs: ["marketing-strategy", "advertising-setup"] },
+  { key: "sales", label: "Sales & Follow-Up", relatedServiceSlugs: ["automation-implementation"] },
+  { key: "operations", label: "Operations & Systems", relatedServiceSlugs: ["automation-implementation", "sop-development"] },
+  { key: "sops", label: "SOPs & Delegation", relatedServiceSlugs: ["sop-development"] },
+  { key: "data", label: "Data & Reporting", relatedServiceSlugs: ["data-dashboards"] },
+  { key: "ownerDependence", label: "Owner Dependence", relatedServiceSlugs: ["sop-development", "owner-advisory-support"] },
+  { key: "growthReadiness", label: "Growth Readiness", relatedServiceSlugs: ["strategic-planning", "monthly-strategy-support"] },
 ];
 
 export const scorecardQuestions: ScorecardQuestion[] = [

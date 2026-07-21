@@ -24,9 +24,9 @@ export default function Home() {
     <>
       <JsonLd data={professionalServiceJsonLd()} />
       <Hero />
-      <PainPoints />
       <ServicesOverviewGrid />
       <EngagementModels />
+      <PainPoints />
       <Outcomes />
       <ProcessSteps />
       <BusinessSupport />

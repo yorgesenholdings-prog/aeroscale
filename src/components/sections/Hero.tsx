@@ -20,7 +20,7 @@ export function Hero() {
             the projects that keep getting pushed aside. Get the expertise and execution support
             you need without building every department in-house.
           </p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <Button
               href="/contact"
               size="lg"
@@ -35,6 +35,14 @@ export function Hero() {
               onClick={() => trackEvent("hero_cta_clicked", { cta: "secondary" })}
             >
               Explore Our Services
+            </Button>
+            <Button
+              href="/instant-quote"
+              variant="secondary"
+              size="lg"
+              onClick={() => trackEvent("hero_cta_clicked", { cta: "instant_quote" })}
+            >
+              Get an Instant Quote
             </Button>
           </div>
           <p className="mt-4 text-sm text-text-muted">

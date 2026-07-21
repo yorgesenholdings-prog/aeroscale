@@ -5,7 +5,7 @@ import Link from "next/link";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { Logo } from "@/components/layout/Logo";
 import { Button } from "@/components/ui/Button";
-import { primaryCta, serviceNavLinks } from "@/config/navigation";
+import { primaryCta, projectNavLinks, supportNavLinks } from "@/config/navigation";
 import { trackEvent } from "@/lib/analytics";
 
 const navLinksBeforeServices = [{ label: "About", href: "/about" }];
@@ -84,22 +84,47 @@ export function Header() {
             {desktopServicesOpen && (
               <div
                 role="menu"
-                className="absolute left-1/2 top-full z-50 mt-2 w-[36rem] -translate-x-1/2 rounded-xl border border-border-subtle bg-white p-4 shadow-lg"
+                className="absolute left-1/2 top-full z-50 mt-2 w-[38rem] -translate-x-1/2 rounded-xl border border-border-subtle bg-white p-5 shadow-lg"
               >
-                <div className="grid grid-cols-2 gap-1">
-                  {serviceNavLinks.map((link) => (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      role="menuitem"
-                      className="rounded-lg px-3 py-2 text-sm font-medium text-text-primary hover:bg-surface-muted hover:text-teal-text"
-                      onClick={closeAll}
-                    >
-                      {link.label}
-                    </Link>
-                  ))}
+                <div className="grid grid-cols-2 gap-6">
+                  <div>
+                    <p className="px-3 text-xs font-bold uppercase tracking-widest text-text-muted">
+                      Projects
+                    </p>
+                    <div className="mt-1.5 flex flex-col gap-0.5">
+                      {projectNavLinks.map((link) => (
+                        <Link
+                          key={link.href}
+                          href={link.href}
+                          role="menuitem"
+                          className="rounded-lg px-3 py-1.5 text-sm font-medium text-text-primary hover:bg-surface-muted hover:text-teal-text"
+                          onClick={closeAll}
+                        >
+                          {link.label}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                  <div>
+                    <p className="px-3 text-xs font-bold uppercase tracking-widest text-text-muted">
+                      Support
+                    </p>
+                    <div className="mt-1.5 flex flex-col gap-0.5">
+                      {supportNavLinks.map((link) => (
+                        <Link
+                          key={link.href}
+                          href={link.href}
+                          role="menuitem"
+                          className="rounded-lg px-3 py-1.5 text-sm font-medium text-text-primary hover:bg-surface-muted hover:text-teal-text"
+                          onClick={closeAll}
+                        >
+                          {link.label}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
                 </div>
-                <div className="mt-2 border-t border-border-subtle pt-2">
+                <div className="mt-3 border-t border-border-subtle pt-3">
                   <Link
                     href="/services"
                     role="menuitem"
@@ -124,7 +149,15 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="hidden lg:block">
+        <div className="hidden items-center gap-2 lg:flex">
+          <Button
+            href="/instant-quote"
+            variant="secondary"
+            size="md"
+            onClick={() => trackEvent("assessment_cta_clicked", { location: "header_instant_quote" })}
+          >
+            Instant Quote
+          </Button>
           <Button
             href={primaryCta.href}
             size="md"
@@ -147,7 +180,7 @@ export function Header() {
       </div>
 
       {mobileOpen && (
-        <div id="mobile-menu" className="border-t border-border-subtle bg-white lg:hidden">
+        <div id="mobile-menu" className="max-h-[calc(100vh-4rem)] overflow-y-auto border-t border-border-subtle bg-white lg:hidden">
           <nav aria-label="Mobile" className="container-page flex flex-col gap-1 py-4">
             <Link
               href="/about"
@@ -172,17 +205,41 @@ export function Header() {
               />
             </button>
             {mobileServicesOpen && (
-              <div id="mobile-services-panel" className="flex flex-col gap-1 pl-4">
-                {serviceNavLinks.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className="rounded-md px-3 py-2 text-sm font-medium text-text-muted hover:bg-surface-muted hover:text-teal-text"
-                    onClick={closeAll}
-                  >
-                    {link.label}
-                  </Link>
-                ))}
+              <div id="mobile-services-panel" className="flex flex-col gap-4 pl-4">
+                <div>
+                  <p className="px-3 text-xs font-bold uppercase tracking-widest text-text-muted">
+                    Projects
+                  </p>
+                  <div className="mt-1 flex flex-col gap-1">
+                    {projectNavLinks.map((link) => (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        className="rounded-md px-3 py-2 text-sm font-medium text-text-muted hover:bg-surface-muted hover:text-teal-text"
+                        onClick={closeAll}
+                      >
+                        {link.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+                <div>
+                  <p className="px-3 text-xs font-bold uppercase tracking-widest text-text-muted">
+                    Support
+                  </p>
+                  <div className="mt-1 flex flex-col gap-1">
+                    {supportNavLinks.map((link) => (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        className="rounded-md px-3 py-2 text-sm font-medium text-text-muted hover:bg-surface-muted hover:text-teal-text"
+                        onClick={closeAll}
+                      >
+                        {link.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
                 <Link
                   href="/services"
                   className="rounded-md px-3 py-2 text-sm font-semibold text-teal-text hover:bg-surface-muted"
@@ -204,7 +261,16 @@ export function Header() {
               </Link>
             ))}
 
-            <Button href={primaryCta.href} size="md" className="mt-3 w-full" onClick={closeAll}>
+            <Button
+              href="/instant-quote"
+              variant="secondary"
+              size="md"
+              className="mt-3 w-full"
+              onClick={closeAll}
+            >
+              Instant Quote
+            </Button>
+            <Button href={primaryCta.href} size="md" className="mt-2 w-full" onClick={closeAll}>
               {primaryCta.label}
             </Button>
           </nav>

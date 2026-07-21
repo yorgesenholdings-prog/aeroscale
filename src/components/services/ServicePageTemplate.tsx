@@ -6,7 +6,9 @@ import { Card } from "@/components/ui/Card";
 import { FaqAccordion } from "@/components/ui/FaqAccordion";
 import { IconBadge } from "@/components/ui/IconBadge";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { ServiceCard } from "@/components/services/ServiceCard";
+import { ProjectPriceBlock } from "@/components/services/ProjectPriceBlock";
+import { SupportPricingTiers } from "@/components/services/SupportPricingTiers";
+import { OftenPairedWith } from "@/components/services/OftenPairedWith";
 import { JsonLd, serviceJsonLd } from "@/components/seo/JsonLd";
 import { getRelatedServices } from "@/config/services";
 import type { ServiceDefinition } from "@/types";
@@ -17,9 +19,15 @@ interface ServicePageTemplateProps {
   afterIntro?: ReactNode;
 }
 
+const categoryMeta = {
+  projects: { label: "Projects", path: "/services/projects" },
+  support: { label: "Support", path: "/services/support" },
+} as const;
+
 export function ServicePageTemplate({ service, afterIntro }: ServicePageTemplateProps) {
   const relatedServices = getRelatedServices(service);
-  const path = `/services/${service.slug}`;
+  const category = categoryMeta[service.category];
+  const path = `/services/${service.category}/${service.slug}`;
 
   return (
     <>
@@ -34,6 +42,7 @@ export function ServicePageTemplate({ service, afterIntro }: ServicePageTemplate
         items={[
           { name: "Home", path: "/" },
           { name: "Services", path: "/services" },
+          { name: category.label, path: category.path },
           { name: service.name, path },
         ]}
       />
@@ -55,6 +64,13 @@ export function ServicePageTemplate({ service, afterIntro }: ServicePageTemplate
           </div>
         </div>
       </section>
+
+      {service.category === "projects" && service.oneTimePrice !== undefined && (
+        <ProjectPriceBlock price={service.oneTimePrice} />
+      )}
+      {service.category === "support" && service.tierPricing && (
+        <SupportPricingTiers tiers={service.tierPricing} />
+      )}
 
       {afterIntro}
 
@@ -152,19 +168,6 @@ export function ServicePageTemplate({ service, afterIntro }: ServicePageTemplate
         </div>
       </section>
 
-      {relatedServices.length > 0 && (
-        <section className="bg-surface py-16 md:py-20">
-          <div className="container-page">
-            <SectionHeading eyebrow="RELATED SUPPORT" heading="Related services" headingLevel="h2" />
-            <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {relatedServices.map((related) => (
-                <ServiceCard key={related.slug} service={related} />
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
       <section className="bg-white py-16 md:py-20">
         <div className="container-page max-w-3xl">
           <SectionHeading eyebrow="COMMON QUESTIONS" heading="Frequently asked questions" headingLevel="h2" />
@@ -173,6 +176,8 @@ export function ServicePageTemplate({ service, afterIntro }: ServicePageTemplate
           </div>
         </div>
       </section>
+
+      {relatedServices.length > 0 && <OftenPairedWith service={relatedServices[0]} />}
 
       <section className="border-t border-border-subtle bg-surface py-16 md:py-20">
         <div className="container-page flex flex-col items-start gap-6 rounded-2xl bg-brand-slate p-8 text-white sm:p-12 md:flex-row md:items-center md:justify-between">
