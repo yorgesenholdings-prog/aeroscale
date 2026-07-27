@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Button } from "@/components/ui/Button";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { ServiceCard } from "@/components/services/ServiceCard";
 import { getServicesByCategory } from "@/config/services";
 import { buildMetadata } from "@/lib/metadata";
@@ -27,7 +28,7 @@ export default function SupportOverviewPage() {
         ]}
       />
 
-      <section className="border-b border-border-subtle bg-white py-16 md:py-24">
+      <section className="bg-white py-16 md:py-24">
         <div className="container-page max-w-3xl">
           <span className="text-xs font-bold uppercase tracking-widest text-teal-text">
             ONGOING SUPPORT
@@ -48,8 +49,10 @@ export default function SupportOverviewPage() {
         <div className="container-page">
           <SectionHeading eyebrow="ALL SUPPORT SERVICES" heading="Choose the ongoing support you need" />
           <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {supportServices.map((service) => (
-              <ServiceCard key={service.slug} service={service} />
+            {supportServices.map((service, index) => (
+              <ScrollReveal key={service.slug} index={index % 6}>
+                <ServiceCard service={service} />
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -59,7 +62,7 @@ export default function SupportOverviewPage() {
         <div className="container-page max-w-3xl">
           <a
             href="/bundles"
-            className="group flex items-center justify-between rounded-xl border border-border-subtle bg-surface p-5 hover:border-teal-text"
+            className="group flex items-center justify-between rounded-[18px] bg-surface p-5 shadow-[0_1px_3px_rgba(20,20,26,0.04)] transition-shadow hover:shadow-[0_8px_20px_rgba(20,20,26,0.08)]"
           >
             <span className="text-sm font-semibold text-brand-slate group-hover:text-teal-text">
               Combining services? See our most popular support bundles and pricing.
@@ -74,7 +77,7 @@ export default function SupportOverviewPage() {
       </section>
 
       <section className="bg-white py-16 md:py-24">
-        <div className="container-page flex flex-col items-start gap-6 rounded-2xl bg-brand-slate p-8 text-white sm:p-12 md:flex-row md:items-center md:justify-between">
+        <div className="container-page flex flex-col items-start gap-6 rounded-[20px] bg-brand-slate p-8 text-white sm:p-12 md:flex-row md:items-center md:justify-between">
           <div className="max-w-xl">
             <h2 className="text-2xl font-bold text-white sm:text-3xl">
               Not sure which support service fits your business?

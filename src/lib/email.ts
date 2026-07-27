@@ -11,29 +11,29 @@ export function escapeHtml(value: string): string {
 
 function row(label: string, value: string | undefined | null): string {
   if (!value) return "";
-  return `<tr><td style="padding:4px 12px 4px 0;color:#5f6b76;font-size:13px;vertical-align:top;white-space:nowrap;">${escapeHtml(
+  return `<tr><td style="padding:4px 12px 4px 0;color:#5b5f6b;font-size:13px;vertical-align:top;white-space:nowrap;">${escapeHtml(
     label
-  )}</td><td style="padding:4px 0;color:#1f2933;font-size:13px;">${escapeHtml(value)}</td></tr>`;
+  )}</td><td style="padding:4px 0;color:#14141a;font-size:13px;">${escapeHtml(value)}</td></tr>`;
 }
 
 function emailShell(title: string, bodyHtml: string): string {
   return `<!doctype html>
 <html>
-  <body style="margin:0;padding:24px;background:#f7f9fa;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;color:#1f2933;">
-    <table role="presentation" width="100%" style="max-width:560px;margin:0 auto;background:#ffffff;border-radius:12px;border:1px solid #dce3e8;overflow:hidden;">
+  <body style="margin:0;padding:24px;background:#f6f7f9;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;color:#14141a;">
+    <table role="presentation" width="100%" style="max-width:560px;margin:0 auto;background:#ffffff;border-radius:12px;border:1px solid #e2e4ea;overflow:hidden;">
       <tr>
-        <td style="background:#3a4f66;padding:20px 24px;">
-          <span style="color:#ffffff;font-size:18px;font-weight:700;">Aero<span style="color:#00a896;">Scale</span></span>
+        <td style="background:#14141a;padding:20px 24px;">
+          <span style="color:#ffffff;font-size:18px;font-weight:700;">Aero<span style="color:#3e63f0;">Scale</span></span>
         </td>
       </tr>
       <tr>
         <td style="padding:24px;">
-          <h1 style="margin:0 0 16px;font-size:18px;color:#3a4f66;">${escapeHtml(title)}</h1>
+          <h1 style="margin:0 0 16px;font-size:18px;color:#14141a;">${escapeHtml(title)}</h1>
           ${bodyHtml}
         </td>
       </tr>
       <tr>
-        <td style="padding:16px 24px;border-top:1px solid #dce3e8;color:#5f6b76;font-size:12px;">
+        <td style="padding:16px 24px;border-top:1px solid #e2e4ea;color:#5b5f6b;font-size:12px;">
           The support system behind your business.
         </td>
       </tr>
@@ -73,11 +73,11 @@ export function buildOwnerNotificationEmail(data: ContactSubmission): {
 
     const bodyHtml = `
       <table role="presentation" width="100%">${rows}</table>
-      <h2 style="font-size:14px;color:#3a4f66;margin:20px 0 6px;">What's currently happening</h2>
+      <h2 style="font-size:14px;color:#14141a;margin:20px 0 6px;">What's currently happening</h2>
       <p style="font-size:13px;line-height:1.6;white-space:pre-wrap;">${escapeHtml(data.currentSituation)}</p>
       ${
         data.desiredOutcome
-          ? `<h2 style="font-size:14px;color:#3a4f66;margin:20px 0 6px;">Desired outcome</h2><p style="font-size:13px;line-height:1.6;white-space:pre-wrap;">${escapeHtml(
+          ? `<h2 style="font-size:14px;color:#14141a;margin:20px 0 6px;">Desired outcome</h2><p style="font-size:13px;line-height:1.6;white-space:pre-wrap;">${escapeHtml(
               data.desiredOutcome
             )}</p>`
           : ""
@@ -96,6 +96,39 @@ export function buildOwnerNotificationEmail(data: ContactSubmission): {
       `Services requested: ${data.servicesRequested.join(", ")}`,
       `What's currently happening: ${data.currentSituation}`,
       data.desiredOutcome && `Desired outcome: ${data.desiredOutcome}`,
+    ]
+      .filter(Boolean)
+      .join("\n");
+
+    return { subject, html: emailShell(subject, bodyHtml), text };
+  }
+
+  if (data.formType === "landingPage") {
+    const subject = `New landing page lead (${data.offerLabel}) from ${data.businessName}`;
+    const rows = [
+      row("Offer", data.offerLabel),
+      row("Name", data.fullName),
+      row("Work email", data.workEmail),
+      row("Phone", data.phone),
+      row("Business name", data.businessName),
+      row("Referrer", data.referrerUrl),
+      row("UTM source", data.utm?.utm_source),
+      row("UTM medium", data.utm?.utm_medium),
+      row("UTM campaign", data.utm?.utm_campaign),
+      row("Submitted at", data.submittedAt),
+    ]
+      .filter(Boolean)
+      .join("");
+
+    const bodyHtml = `<table role="presentation" width="100%">${rows}</table>`;
+
+    const text = [
+      subject,
+      `Offer: ${data.offerLabel}`,
+      `Name: ${data.fullName}`,
+      `Work email: ${data.workEmail}`,
+      data.phone && `Phone: ${data.phone}`,
+      `Business: ${data.businessName}`,
     ]
       .filter(Boolean)
       .join("\n");
@@ -128,7 +161,7 @@ export function buildOwnerNotificationEmail(data: ContactSubmission): {
 
   const bodyHtml = `
     <table role="presentation" width="100%">${rows}</table>
-    <h2 style="font-size:14px;color:#3a4f66;margin:20px 0 6px;">Category scores</h2>
+    <h2 style="font-size:14px;color:#14141a;margin:20px 0 6px;">Category scores</h2>
     <table role="presentation" width="100%">${categoryRows}</table>
   `;
 
@@ -163,6 +196,19 @@ export function buildProspectConfirmationEmail(data: ContactSubmission): {
     return { subject, html: emailShell(subject, bodyHtml), text };
   }
 
+  if (data.formType === "landingPage") {
+    const subject = `We received your request — ${data.offerLabel}`;
+    const bodyHtml = `
+      <p style="font-size:14px;line-height:1.6;">Hi ${escapeHtml(firstName)},</p>
+      <p style="font-size:14px;line-height:1.6;">Thanks for reaching out about <strong>${escapeHtml(
+        data.offerLabel
+      )}</strong>. We received your request and will follow up shortly to schedule a quick call.</p>
+      <p style="font-size:14px;line-height:1.6;">AeroScale<br/>The support system behind your business.</p>
+    `;
+    const text = `Hi ${firstName},\n\nThanks for reaching out about ${data.offerLabel}. We received your request and will follow up shortly to schedule a quick call.\n\nAeroScale\nThe support system behind your business.`;
+    return { subject, html: emailShell(subject, bodyHtml), text };
+  }
+
   const subject = "Your AeroScale Growth Scorecard results";
   const categoryRows = data.scorecardResults.categoryScores
     .map((c) => row(c.label, `${c.score}/100`))
@@ -171,15 +217,15 @@ export function buildProspectConfirmationEmail(data: ContactSubmission): {
   const bodyHtml = `
     <p style="font-size:14px;line-height:1.6;">Hi ${escapeHtml(firstName)},</p>
     <p style="font-size:14px;line-height:1.6;">Thanks for completing the Small Business Growth Scorecard. Here is a copy of your results.</p>
-    <p style="font-size:28px;font-weight:700;color:#3a4f66;margin:16px 0 0;">${data.scorecardResults.overallScore}/100</p>
-    <p style="font-size:14px;color:#5f6b76;margin:0 0 16px;">${escapeHtml(data.scorecardResults.bandLabel)}</p>
+    <p style="font-size:28px;font-weight:700;color:#14141a;margin:16px 0 0;">${data.scorecardResults.overallScore}/100</p>
+    <p style="font-size:14px;color:#5b5f6b;margin:0 0 16px;">${escapeHtml(data.scorecardResults.bandLabel)}</p>
     <table role="presentation" width="100%">${categoryRows}</table>
     <p style="font-size:14px;line-height:1.6;margin-top:16px;">${
       data.wantsAssessment
         ? "We'll also follow up about the free business assessment you requested."
         : "If you'd like a free business assessment based on these results, just reply to this email."
     }</p>
-    <p style="font-size:12px;line-height:1.6;color:#5f6b76;margin-top:16px;">The scorecard is an educational assessment, not a guarantee, valuation, financial analysis, or substitute for professional legal, accounting, tax, or financial advice.</p>
+    <p style="font-size:12px;line-height:1.6;color:#5b5f6b;margin-top:16px;">The scorecard is an educational assessment, not a guarantee, valuation, financial analysis, or substitute for professional legal, accounting, tax, or financial advice.</p>
     <p style="font-size:14px;line-height:1.6;">AeroScale<br/>The support system behind your business.</p>
   `;
 

@@ -5,6 +5,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { IconBadge } from "@/components/ui/IconBadge";
 import { ContentPlaceholder } from "@/components/ui/ContentPlaceholder";
 import { Button } from "@/components/ui/Button";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { buildMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = buildMetadata({
@@ -62,7 +63,7 @@ export default function AboutPage() {
     <>
       <Breadcrumbs items={[{ name: "Home", path: "/" }, { name: "About", path: "/about" }]} />
 
-      <section className="border-b border-border-subtle bg-white py-16 md:py-24">
+      <section className="bg-white py-16 md:py-24">
         <div className="container-page max-w-3xl">
           <span className="text-xs font-bold uppercase tracking-widest text-teal-text">ABOUT AEROSCALE</span>
           <h1 className="mt-4 text-4xl font-bold leading-tight tracking-tight text-brand-slate sm:text-5xl">
@@ -148,12 +149,12 @@ export default function AboutPage() {
         <div className="container-page">
           <SectionHeading eyebrow="WHAT GUIDES OUR WORK" heading="Our values" />
           <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {values.map((value) => (
-              <div key={value.title}>
+            {values.map((value, index) => (
+              <ScrollReveal key={value.title} index={index % 6}>
                 <IconBadge icon={value.icon} />
                 <h3 className="mt-3 text-base font-semibold text-brand-slate">{value.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-text-muted">{value.description}</p>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -170,7 +171,7 @@ export default function AboutPage() {
       </section>
 
       <section className="bg-white py-16 md:py-24">
-        <div className="container-page flex flex-col items-start gap-6 rounded-2xl bg-brand-slate p-8 text-white sm:p-12 md:flex-row md:items-center md:justify-between">
+        <div className="container-page flex flex-col items-start gap-6 rounded-[20px] bg-brand-slate p-8 text-white sm:p-12 md:flex-row md:items-center md:justify-between">
           <div className="max-w-xl">
             <h2 className="text-2xl font-bold text-white sm:text-3xl">
               Ready to talk through what your business needs next?

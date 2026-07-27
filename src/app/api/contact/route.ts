@@ -64,7 +64,9 @@ export async function POST(request: NextRequest) {
     const summary =
       data.formType === "contact"
         ? `[contact] New business assessment request from ${data.businessName} <${data.workEmail}> — services: ${data.servicesRequested.join(", ")}`
-        : `[contact] New scorecard lead from ${data.businessName} <${data.workEmail}> — score: ${data.scorecardResults.overallScore}/100`;
+        : data.formType === "landingPage"
+          ? `[contact] New landing page lead from ${data.businessName} <${data.workEmail}> — offer: ${data.offerLabel}`
+          : `[contact] New scorecard lead from ${data.businessName} <${data.workEmail}> — score: ${data.scorecardResults.overallScore}/100`;
 
     console.log(summary);
     console.log("[contact] Email delivery disabled (CONTACT_FORM_MODE=console). Set CONTACT_FORM_MODE=resend with Resend credentials to send real emails.");

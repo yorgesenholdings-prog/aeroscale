@@ -49,7 +49,7 @@ export function ScorecardApp() {
 
   return (
     <div>
-      <div className="sticky top-16 z-10 -mx-4 mb-8 border-b border-border-subtle bg-white/95 px-4 py-3 backdrop-blur sm:top-20">
+      <div className="sticky top-16 z-10 -mx-4 mb-8 bg-white/95 px-4 py-3 shadow-[0_1px_3px_rgba(20,20,26,0.06)] backdrop-blur sm:top-20">
         <div className="flex items-center justify-between text-sm">
           <span className="font-medium text-text-primary">
             {answeredCount} of {totalQuestions} answered
@@ -87,7 +87,7 @@ export function ScorecardApp() {
         ))}
       </div>
 
-      <div className="mt-10 border-t border-border-subtle pt-8">
+      <div className="mt-10 pt-8">
         {attemptedSubmit && !complete && (
           <p role="alert" className="mb-4 text-sm font-medium text-error">
             Please answer every question before viewing your results.

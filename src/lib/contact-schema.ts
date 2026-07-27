@@ -114,6 +114,22 @@ export const contactFormSchema = z.object({
   ...sharedFields,
 });
 
+export const landingPageOfferSlugs = ["automation", "marketing-management"] as const;
+
+export const landingPageLeadSchema = z.object({
+  formType: z.literal("landingPage"),
+  offerSlug: z.enum(landingPageOfferSlugs),
+  offerLabel: z.string().trim().min(1).max(150),
+  fullName: z.string().trim().min(1, "Full name is required").max(150),
+  workEmail: z.string().trim().email("Enter a valid email address").max(200),
+  phone: z.string().trim().max(40).optional().or(z.literal("")),
+  businessName: z.string().trim().min(1, "Business name is required").max(150),
+  consent: z.literal(true, {
+    message: "You must agree to be contacted before submitting",
+  }),
+  ...sharedFields,
+});
+
 export const scorecardLeadSchema = z.object({
   formType: z.literal("scorecard"),
   fullName: z.string().trim().min(1, "Full name is required").max(150),
@@ -133,8 +149,10 @@ export const scorecardLeadSchema = z.object({
 export const contactSubmissionSchema = z.discriminatedUnion("formType", [
   contactFormSchema,
   scorecardLeadSchema,
+  landingPageLeadSchema,
 ]);
 
 export type ContactFormValues = z.infer<typeof contactFormSchema>;
 export type ScorecardLeadValues = z.infer<typeof scorecardLeadSchema>;
+export type LandingPageLeadValues = z.infer<typeof landingPageLeadSchema>;
 export type ContactSubmission = z.infer<typeof contactSubmissionSchema>;

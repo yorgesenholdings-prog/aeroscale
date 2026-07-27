@@ -14,7 +14,7 @@ export function ScorecardQuestionCard({
   onAnswer,
 }: ScorecardQuestionCardProps) {
   return (
-    <fieldset className="rounded-xl border border-border-subtle bg-white p-5">
+    <fieldset className="rounded-2xl bg-white p-5 shadow-[0_1px_3px_rgba(20,20,26,0.04)]">
       <legend className="px-1 text-sm font-semibold text-text-primary">
         <span className="text-text-muted">{index}.</span> {question.prompt}
       </legend>

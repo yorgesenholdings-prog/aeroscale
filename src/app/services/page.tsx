@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { ArrowRight, ClipboardList, Repeat } from "lucide-react";
-import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Button } from "@/components/ui/Button";
 import { FaqAccordion } from "@/components/ui/FaqAccordion";
-import { IconBadge } from "@/components/ui/IconBadge";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { FeaturedOffers } from "@/components/sections/FeaturedOffers";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { buildMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = buildMetadata({
@@ -34,7 +33,7 @@ const servicesFaqs = [
   {
     question: "Is there a discount for combining multiple Support services?",
     answer:
-      "Yes. Combine 2–3 recurring Support services and get 10% off your combined monthly total, or combine 4 or more for 20% off. The discount applies automatically to whatever services you choose. See example combinations on the Bundles page, or build your own on the Instant Quote page to see your discounted total.",
+      "Yes. Combine 2–3 recurring Support services and get 10% off your combined monthly total, or combine 4 or more for 20% off. The discount applies automatically to whatever services you choose. See example combinations on the Bundles page.",
   },
 ];
 
@@ -43,7 +42,7 @@ export default function ServicesPage() {
     <>
       <Breadcrumbs items={[{ name: "Home", path: "/" }, { name: "Services", path: "/services" }]} />
 
-      <section className="border-b border-border-subtle bg-white py-16 md:py-24">
+      <section className="bg-white py-16 md:py-24">
         <div className="container-page max-w-3xl">
           <span className="text-xs font-bold uppercase tracking-widest text-teal-text">
             SMALL BUSINESS CONSULTING SERVICES
@@ -52,67 +51,44 @@ export default function ServicesPage() {
             Support for the strategy, systems, and work behind small business growth.
           </h1>
           <p className="mt-6 text-lg leading-relaxed text-text-muted">
-            AeroScale&apos;s work falls into two categories. Some clients need one focused project
-            finished. Others want an ongoing consulting and implementation partner. Engagements
-            are designed around your business problem — not a predetermined package you have to
-            fit into.
+            Most clients start with one of the two core services below. Need something more
+            specific? The full range of one-time projects and ongoing support is also available
+            further down.
           </p>
         </div>
       </section>
 
-      <section className="bg-surface py-16 md:py-24">
-        <div className="container-page grid grid-cols-1 gap-6 lg:grid-cols-2">
-          <Link
-            href="/services/projects"
-            className="group flex flex-col rounded-2xl border border-border-subtle bg-white p-8 shadow-sm transition-all hover:-translate-y-0.5 hover:border-teal-text hover:shadow-md sm:p-10"
-          >
-            <IconBadge icon={ClipboardList} size="lg" />
-            <h2 className="mt-5 text-2xl font-bold text-brand-slate group-hover:text-teal-text">
-              Projects
-            </h2>
-            <p className="mt-3 flex-1 text-base leading-relaxed text-text-muted">
-              Focused, one-time engagements with a defined scope and finish line — a strategic
-              plan, a business plan, an automation build, a redesigned process. Each project has
-              its own flat-fee pricing.
-            </p>
-            <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-teal-text">
-              Explore project services
-              <ArrowRight size={16} aria-hidden="true" className="transition-transform group-hover:translate-x-1" />
-            </span>
-          </Link>
+      <FeaturedOffers />
 
-          <Link
-            href="/services/support"
-            className="group flex flex-col rounded-2xl border border-border-subtle bg-white p-8 shadow-sm transition-all hover:-translate-y-0.5 hover:border-teal-text hover:shadow-md sm:p-10"
-          >
-            <IconBadge icon={Repeat} size="lg" />
-            <h2 className="mt-5 text-2xl font-bold text-brand-slate group-hover:text-teal-text">
+      <section className="bg-surface py-16 md:py-20">
+        <div className="container-page max-w-2xl">
+          <SectionHeading
+            heading="Looking for additional services?"
+            supporting="Browse the full catalog of one-time projects and ongoing support."
+            align="center"
+          />
+          <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <Button href="/services/projects" variant="secondary" size="lg" className="w-full sm:w-auto">
+              Projects
+            </Button>
+            <Button href="/services/support" variant="secondary" size="lg" className="w-full sm:w-auto">
               Support
-            </h2>
-            <p className="mt-3 flex-1 text-base leading-relaxed text-text-muted">
-              Ongoing, recurring engagements that flex with your business month to month —
-              strategy, marketing execution, reporting, automation maintenance, and more. Each
-              service is priced in three tiers.
-            </p>
-            <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-teal-text">
-              Explore ongoing support
-              <ArrowRight size={16} aria-hidden="true" className="transition-transform group-hover:translate-x-1" />
-            </span>
-          </Link>
+            </Button>
+          </div>
         </div>
       </section>
 
       <section className="bg-white py-16 md:py-24">
         <div className="container-page max-w-3xl">
           <SectionHeading eyebrow="COMMON QUESTIONS" heading="Frequently asked questions" />
-          <div className="mt-8">
+          <ScrollReveal className="mt-8">
             <FaqAccordion items={servicesFaqs} idPrefix="services-faq" />
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
       <section className="bg-surface py-16 md:py-24">
-        <div className="container-page flex flex-col items-start gap-6 rounded-2xl bg-brand-slate p-8 text-white sm:p-12 md:flex-row md:items-center md:justify-between">
+        <div className="container-page flex flex-col items-start gap-6 rounded-[20px] bg-brand-slate p-8 text-white sm:p-12 md:flex-row md:items-center md:justify-between">
           <div className="max-w-xl">
             <h2 className="text-2xl font-bold text-white sm:text-3xl">
               Not sure which service fits your business?

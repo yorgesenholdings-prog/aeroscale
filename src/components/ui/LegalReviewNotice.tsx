@@ -9,7 +9,7 @@ import { AlertTriangle } from "lucide-react";
  */
 export function LegalReviewNotice() {
   return (
-    <div className="flex items-start gap-3 rounded-xl border border-dashed border-border-subtle bg-surface p-5">
+    <div className="flex items-start gap-3 rounded-2xl border border-dashed border-slate-muted bg-surface p-5">
       <AlertTriangle size={20} aria-hidden="true" className="mt-0.5 shrink-0 text-teal-text" />
       <p className="text-sm leading-relaxed text-text-muted">
         <strong className="text-text-primary">Pending legal review.</strong>{" "}

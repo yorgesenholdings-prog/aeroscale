@@ -1,5 +1,6 @@
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { FaqAccordion } from "@/components/ui/FaqAccordion";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
 const homeFaqs = [
   {
@@ -39,9 +40,9 @@ export function HomeFaq() {
     <section className="bg-white py-16 md:py-24">
       <div className="container-page">
         <SectionHeading eyebrow="COMMON QUESTIONS" heading="Frequently asked questions" />
-        <div className="mt-10 max-w-3xl">
+        <ScrollReveal className="mt-10 max-w-3xl">
           <FaqAccordion items={homeFaqs} idPrefix="home-faq" />
-        </div>
+        </ScrollReveal>
       </div>
     </section>
   );

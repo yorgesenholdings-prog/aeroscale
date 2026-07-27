@@ -13,7 +13,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${siteConfig.url}/services/projects`, lastModified: now, changeFrequency: "monthly", priority: 0.88 },
     { url: `${siteConfig.url}/services/support`, lastModified: now, changeFrequency: "monthly", priority: 0.88 },
     { url: `${siteConfig.url}/bundles`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${siteConfig.url}/instant-quote`, lastModified: now, changeFrequency: "monthly", priority: 0.85 },
     { url: `${siteConfig.url}/blog`, lastModified: now, changeFrequency: "weekly", priority: 0.7 },
     { url: `${siteConfig.url}/contact`, lastModified: now, changeFrequency: "yearly", priority: 0.7 },
     { url: `${siteConfig.url}/growth-scorecard`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },

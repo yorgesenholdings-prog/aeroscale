@@ -6,6 +6,8 @@ interface LogoProps {
   variant?: LogoVariant;
   className?: string;
   href?: string;
+  /** When false, renders the mark without a link — for pages that intentionally have no navigation. */
+  linked?: boolean;
 }
 
 const markColors: Record<
@@ -13,11 +15,11 @@ const markColors: Record<
   { frameFill: string; frameOpacity: number; connector: string; node: string; accentNode: string }
 > = {
   color: {
-    frameFill: "#3a4f66",
+    frameFill: "#14141a",
     frameOpacity: 1,
     connector: "#ffffff",
     node: "#ffffff",
-    accentNode: "#00a896",
+    accentNode: "#3e63f0",
   },
   white: {
     frameFill: "#ffffff",
@@ -27,7 +29,7 @@ const markColors: Record<
     accentNode: "#ffffff",
   },
   slate: {
-    frameFill: "#3a4f66",
+    frameFill: "#14141a",
     frameOpacity: 1,
     connector: "#ffffff",
     node: "#ffffff",
@@ -36,9 +38,9 @@ const markColors: Record<
 };
 
 const textColors: Record<LogoVariant, { first: string; second: string }> = {
-  color: { first: "#3a4f66", second: "#00a896" },
+  color: { first: "#14141a", second: "#3e63f0" },
   white: { first: "#ffffff", second: "#ffffff" },
-  slate: { first: "#3a4f66", second: "#3a4f66" },
+  slate: { first: "#14141a", second: "#14141a" },
 };
 
 /**
@@ -77,19 +79,33 @@ function LogoMark({ variant }: { variant: LogoVariant }) {
   );
 }
 
-export function Logo({ variant = "color", className = "", href = "/" }: LogoProps) {
+export function Logo({ variant = "color", className = "", href = "/", linked = true }: LogoProps) {
   const text = textColors[variant];
+  const content = (
+    <>
+      <LogoMark variant={variant} />
+      <span className="font-display text-lg font-bold leading-none tracking-tight">
+        <span style={{ color: text.first }}>Aero</span>
+        <span style={{ color: text.second }}>Scale</span>
+      </span>
+    </>
+  );
+
+  if (!linked) {
+    return (
+      <span className={`inline-flex items-center gap-2 rounded-sm ${className}`} aria-label="AeroScale">
+        {content}
+      </span>
+    );
+  }
+
   return (
     <Link
       href={href}
       className={`inline-flex items-center gap-2 rounded-sm ${className}`}
       aria-label="AeroScale home"
     >
-      <LogoMark variant={variant} />
-      <span className="text-lg font-bold tracking-tight leading-none">
-        <span style={{ color: text.first }}>Aero</span>
-        <span style={{ color: text.second }}>Scale</span>
-      </span>
+      {content}
     </Link>
   );
 }

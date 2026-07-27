@@ -24,7 +24,7 @@ export function SectionHeading({
   return (
     <div className={`max-w-3xl ${alignment} ${className}`}>
       {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
-      <Heading className="mt-3 text-3xl font-bold tracking-tight text-brand-slate sm:text-4xl">
+      <Heading className="mt-3 text-[clamp(1.8rem,3vw,2.6rem)] leading-[1.15] font-bold tracking-[-0.01em] text-brand-slate">
         {heading}
       </Heading>
       {supporting && <p className="mt-4 text-lg leading-relaxed text-text-muted">{supporting}</p>}

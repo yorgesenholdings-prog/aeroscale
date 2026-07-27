@@ -9,7 +9,7 @@ export function ServiceCard({ service }: { service: ServiceDefinition }) {
       href={`/services/${service.category}/${service.slug}`}
       eventName="service_card_clicked"
       eventProperties={{ service: service.slug }}
-      className="group flex flex-col rounded-xl border border-border-subtle bg-white p-6 shadow-sm transition-all hover:-translate-y-0.5 hover:border-teal-text hover:shadow-md"
+      className="group flex flex-col rounded-[18px] bg-white p-6 shadow-[0_1px_3px_rgba(20,20,26,0.04)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(20,20,26,0.1)]"
     >
       <IconBadge icon={service.icon} />
       <h3 className="mt-4 text-lg font-semibold text-brand-slate group-hover:text-teal-text">

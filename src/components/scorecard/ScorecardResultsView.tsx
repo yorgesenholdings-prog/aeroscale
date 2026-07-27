@@ -19,11 +19,11 @@ export function ScorecardResultsView({ results }: { results: ScorecardComputedRe
 
   return (
     <div className="space-y-10">
-      <div className="rounded-2xl border border-border-subtle bg-white p-8 text-center sm:p-10">
+      <div className="rounded-[20px] bg-white p-8 text-center shadow-[0_1px_3px_rgba(20,20,26,0.04)] sm:p-10">
         <span className="text-xs font-bold uppercase tracking-widest text-teal-text">
           YOUR RESULTS
         </span>
-        <p className="mt-3 text-6xl font-bold text-brand-slate">{results.overallScore}</p>
+        <p className="font-display mt-3 text-6xl font-bold text-brand-slate">{results.overallScore}</p>
         <p className="text-sm text-text-muted">out of 100</p>
         <h2 className="mt-4 text-2xl font-bold text-brand-slate">{band.label}</h2>
         <p className="mx-auto mt-2 max-w-xl text-sm leading-relaxed text-text-muted">
@@ -69,7 +69,7 @@ export function ScorecardResultsView({ results }: { results: ScorecardComputedRe
           {results.weakestCategories.map((category) => (
             <li
               key={category.key}
-              className="rounded-lg border border-border-subtle bg-surface p-4 text-sm"
+              className="rounded-2xl bg-surface p-4 text-sm shadow-[0_1px_3px_rgba(20,20,26,0.04)]"
             >
               <span className="font-semibold text-brand-slate">{category.label}</span>
               <span className="ml-2 text-text-muted">{category.score}/100</span>
@@ -86,7 +86,7 @@ export function ScorecardResultsView({ results }: { results: ScorecardComputedRe
               <Link
                 key={service.slug}
                 href={`/services/${service.category}/${service.slug}`}
-                className="group flex items-center justify-between rounded-lg border border-border-subtle bg-white p-4 text-sm font-semibold text-brand-slate hover:border-teal-text hover:text-teal-text"
+                className="group flex items-center justify-between rounded-2xl bg-white p-4 text-sm font-semibold text-brand-slate shadow-[0_1px_3px_rgba(20,20,26,0.04)] transition-shadow hover:shadow-[0_8px_20px_rgba(20,20,26,0.08)] hover:text-teal-text"
               >
                 {service.name}
                 <ArrowRight size={16} aria-hidden="true" className="transition-transform group-hover:translate-x-1" />
@@ -96,7 +96,7 @@ export function ScorecardResultsView({ results }: { results: ScorecardComputedRe
         </div>
       )}
 
-      <p className="border-t border-border-subtle pt-6 text-xs leading-relaxed text-text-muted">
+      <p className="pt-6 text-xs leading-relaxed text-text-muted">
         The scorecard is an educational assessment, not a guarantee, valuation, financial
         analysis, or substitute for professional legal, accounting, tax, or financial advice.
       </p>

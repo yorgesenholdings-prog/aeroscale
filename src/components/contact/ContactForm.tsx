@@ -147,10 +147,7 @@ export function ContactForm() {
 
   if (status === "success") {
     return (
-      <div
-        role="status"
-        className="flex items-start gap-3 rounded-xl border border-border-subtle bg-white p-6"
-      >
+      <div role="status" className="flex items-start gap-3">
         <CheckCircle2 size={22} aria-hidden="true" className="mt-0.5 shrink-0 text-teal-text" />
         <div>
           <p className="font-semibold text-brand-slate">Your request has been received.</p>

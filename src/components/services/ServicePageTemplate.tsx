@@ -6,6 +6,7 @@ import { Card } from "@/components/ui/Card";
 import { FaqAccordion } from "@/components/ui/FaqAccordion";
 import { IconBadge } from "@/components/ui/IconBadge";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { ProjectPriceBlock } from "@/components/services/ProjectPriceBlock";
 import { SupportPricingTiers } from "@/components/services/SupportPricingTiers";
 import { OftenPairedWith } from "@/components/services/OftenPairedWith";
@@ -47,7 +48,7 @@ export function ServicePageTemplate({ service, afterIntro }: ServicePageTemplate
         ]}
       />
 
-      <section className="border-b border-border-subtle bg-white py-16 md:py-20">
+      <section className="bg-white py-16 md:py-20">
         <div className="container-page max-w-3xl">
           <span className="text-xs font-bold uppercase tracking-widest text-teal-text">
             {service.eyebrow}
@@ -78,10 +79,15 @@ export function ServicePageTemplate({ service, afterIntro }: ServicePageTemplate
         <div className="container-page">
           <SectionHeading eyebrow="THE CHALLENGE" heading="Problems this service solves" />
           <ul className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
-            {service.problemsSolved.map((problem) => (
-              <li key={problem} className="flex items-start gap-3 rounded-lg border border-border-subtle bg-white p-4">
-                <IconBadge icon={Check} size="md" />
-                <span className="pt-1.5 text-sm text-text-primary">{problem}</span>
+            {service.problemsSolved.map((problem, index) => (
+              <li key={problem}>
+                <ScrollReveal
+                  index={index}
+                  className="flex items-start gap-3 rounded-2xl bg-white p-4 shadow-[0_1px_3px_rgba(20,20,26,0.04)]"
+                >
+                  <IconBadge icon={Check} size="md" />
+                  <span className="pt-1.5 text-sm text-text-primary">{problem}</span>
+                </ScrollReveal>
               </li>
             ))}
           </ul>
@@ -101,7 +107,7 @@ export function ServicePageTemplate({ service, afterIntro }: ServicePageTemplate
               ))}
             </ul>
             {service.notes && service.notes.length > 0 && (
-              <div className="mt-6 flex items-start gap-3 rounded-lg border border-border-subtle bg-surface p-4">
+              <div className="mt-6 flex items-start gap-3 rounded-2xl bg-surface p-4">
                 <Info size={18} aria-hidden="true" className="mt-0.5 shrink-0 text-teal-text" />
                 <ul className="space-y-1.5 text-sm leading-relaxed text-text-muted">
                   {service.notes.map((note) => (
@@ -156,13 +162,13 @@ export function ServicePageTemplate({ service, afterIntro }: ServicePageTemplate
           <SectionHeading eyebrow="HOW WE WORK" heading="Engagement process" headingLevel="h2" />
           <div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {service.process.map((step, index) => (
-              <div key={step.title}>
-                <span className="text-3xl font-bold text-brand-slate">
+              <ScrollReveal key={step.title} index={index}>
+                <span className="font-display text-3xl font-bold text-brand-slate">
                   {String(index + 1).padStart(2, "0")}
                 </span>
                 <h3 className="mt-3 text-lg font-semibold text-brand-slate">{step.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-text-muted">{step.description}</p>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -179,8 +185,8 @@ export function ServicePageTemplate({ service, afterIntro }: ServicePageTemplate
 
       {relatedServices.length > 0 && <OftenPairedWith service={relatedServices[0]} />}
 
-      <section className="border-t border-border-subtle bg-surface py-16 md:py-20">
-        <div className="container-page flex flex-col items-start gap-6 rounded-2xl bg-brand-slate p-8 text-white sm:p-12 md:flex-row md:items-center md:justify-between">
+      <section className="bg-surface py-16 md:py-20">
+        <div className="container-page flex flex-col items-start gap-6 rounded-[20px] bg-brand-slate p-8 text-white sm:p-12 md:flex-row md:items-center md:justify-between">
           <div className="max-w-xl">
             <h2 className="text-2xl font-bold text-white sm:text-3xl">
               Ready to talk about {service.name.toLowerCase()}?

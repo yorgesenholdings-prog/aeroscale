@@ -29,7 +29,7 @@ export default function ContactPage() {
               outcome you are working toward. AeroScale will review your request and
               recommend a practical next step.
             </p>
-            <div className="mt-8 rounded-xl border border-border-subtle bg-surface p-5 text-sm text-text-muted">
+            <div className="mt-8 rounded-2xl bg-surface p-5 text-sm text-text-muted">
               Prefer a guided assessment instead? Try the{" "}
               <a href="/growth-scorecard" className="font-semibold text-teal-text hover:text-teal-text-dark">
                 free Growth Scorecard
@@ -38,7 +38,7 @@ export default function ContactPage() {
             </div>
           </div>
 
-          <div className="rounded-2xl border border-border-subtle bg-white p-6 shadow-sm sm:p-8">
+          <div className="rounded-[20px] bg-white p-6 shadow-[0_1px_3px_rgba(20,20,26,0.04)] sm:p-8">
             <ContactForm />
           </div>
         </div>

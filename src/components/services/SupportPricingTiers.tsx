@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/Button";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { PRICING_TIERS, formatCurrency } from "@/config/pricing";
 import type { TierPricing } from "@/types";
 
@@ -17,38 +18,54 @@ export function SupportPricingTiers({ tiers }: { tiers: TierPricing }) {
         </div>
 
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-3 sm:items-start">
-          {PRICING_TIERS.map((tier) => {
+          {PRICING_TIERS.map((tier, index) => {
             const isFeatured = tier.key === "mid";
             return (
-              <div
-                key={tier.key}
-                className={
-                  isFeatured
-                    ? "relative flex flex-col rounded-2xl border-2 border-teal-text bg-white p-6 shadow-lg sm:-my-2 sm:py-8"
-                    : "flex flex-col rounded-2xl border border-border-subtle bg-white p-6 shadow-sm"
-                }
-              >
-                {isFeatured && (
-                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-teal-text px-3 py-1 text-xs font-bold uppercase tracking-widest text-white">
-                    Most Popular
+              <ScrollReveal key={tier.key} index={index}>
+                <div
+                  className={
+                    isFeatured
+                      ? "relative flex flex-col rounded-[18px] bg-brand-slate p-6 text-white shadow-[0_20px_40px_rgba(20,20,26,0.12)] sm:-my-2 sm:py-8"
+                      : "flex flex-col rounded-[18px] bg-white p-6 shadow-[0_1px_3px_rgba(20,20,26,0.04)]"
+                  }
+                >
+                  {isFeatured && (
+                    <span className="absolute -top-3 left-1/2 w-fit -translate-x-1/2 rounded-full bg-teal-on-slate px-3 py-1 text-xs font-bold tracking-widest text-brand-slate uppercase">
+                      Most Popular
+                    </span>
+                  )}
+                  <span
+                    className={
+                      isFeatured
+                        ? "text-xs font-bold tracking-widest text-slate-muted uppercase"
+                        : "text-xs font-bold tracking-widest text-text-muted uppercase"
+                    }
+                  >
+                    {tier.label}
                   </span>
-                )}
-                <span className="text-xs font-bold uppercase tracking-widest text-text-muted">
-                  {tier.label}
-                </span>
-                <p className="mt-2 text-3xl font-bold text-brand-slate">
-                  {formatCurrency(tiers[tier.key])}
-                  <span className="text-base font-medium text-text-muted"> / month</span>
-                </p>
-                <p className="mt-3 flex-1 text-sm leading-relaxed text-text-muted">
-                  {tier.description}
-                </p>
-                <div className="mt-5">
-                  <Button href="/contact" variant={isFeatured ? "primary" : "secondary"} className="w-full">
-                    Get Started
-                  </Button>
+                  <p className={isFeatured ? "font-display mt-2 text-3xl font-bold" : "font-display mt-2 text-3xl font-bold text-brand-slate"}>
+                    {formatCurrency(tiers[tier.key])}
+                    <span className={isFeatured ? "text-base font-medium text-slate-muted" : "text-base font-medium text-text-muted"}>
+                      {" "}
+                      / month
+                    </span>
+                  </p>
+                  <p
+                    className={
+                      isFeatured
+                        ? "mt-3 flex-1 text-sm leading-relaxed text-slate-muted"
+                        : "mt-3 flex-1 text-sm leading-relaxed text-text-muted"
+                    }
+                  >
+                    {tier.description}
+                  </p>
+                  <div className="mt-5">
+                    <Button href="/contact" variant={isFeatured ? "onDark" : "secondary"} className="w-full">
+                      Get Started
+                    </Button>
+                  </div>
                 </div>
-              </div>
+              </ScrollReveal>
             );
           })}
         </div>

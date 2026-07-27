@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Button } from "@/components/ui/Button";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { ServiceCard } from "@/components/services/ServiceCard";
 import { getServicesByCategory } from "@/config/services";
 import { buildMetadata } from "@/lib/metadata";
@@ -26,7 +27,7 @@ export default function ProjectsOverviewPage() {
         ]}
       />
 
-      <section className="border-b border-border-subtle bg-white py-16 md:py-24">
+      <section className="bg-white py-16 md:py-24">
         <div className="container-page max-w-3xl">
           <span className="text-xs font-bold uppercase tracking-widest text-teal-text">
             ONE-TIME PROJECTS
@@ -46,15 +47,17 @@ export default function ProjectsOverviewPage() {
         <div className="container-page">
           <SectionHeading eyebrow="ALL PROJECT SERVICES" heading="Choose a project to get started" />
           <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {projectServices.map((service) => (
-              <ServiceCard key={service.slug} service={service} />
+            {projectServices.map((service, index) => (
+              <ScrollReveal key={service.slug} index={index % 6}>
+                <ServiceCard service={service} />
+              </ScrollReveal>
             ))}
           </div>
         </div>
       </section>
 
       <section className="bg-white py-16 md:py-24">
-        <div className="container-page flex flex-col items-start gap-6 rounded-2xl bg-brand-slate p-8 text-white sm:p-12 md:flex-row md:items-center md:justify-between">
+        <div className="container-page flex flex-col items-start gap-6 rounded-[20px] bg-brand-slate p-8 text-white sm:p-12 md:flex-row md:items-center md:justify-between">
           <div className="max-w-xl">
             <h2 className="text-2xl font-bold text-white sm:text-3xl">
               Not sure which project fits your business?

@@ -1,6 +1,7 @@
 import { Stethoscope, PenTool, Hammer } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { IconBadge } from "@/components/ui/IconBadge";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
 const columns = [
   {
@@ -31,12 +32,12 @@ export function BusinessSupport() {
         />
 
         <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-3">
-          {columns.map((column) => (
-            <div key={column.title}>
+          {columns.map((column, index) => (
+            <ScrollReveal key={column.title} index={index}>
               <IconBadge icon={column.icon} tone="slate" size="lg" />
               <h3 className="mt-4 text-lg font-semibold text-brand-slate">{column.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-text-muted">{column.description}</p>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
       </div>

@@ -1,7 +1,6 @@
 export type AnalyticsEventName =
   | "hero_cta_clicked"
   | "service_card_clicked"
-  | "services_viewed"
   | "assessment_cta_clicked"
   | "scorecard_started"
   | "scorecard_completed"
@@ -9,7 +8,10 @@ export type AnalyticsEventName =
   | "contact_form_started"
   | "contact_form_submitted"
   | "contact_form_error"
-  | "source_link_clicked";
+  | "source_link_clicked"
+  | "lp_lead_form_started"
+  | "lp_lead_submitted"
+  | "lp_lead_error";
 
 export type AnalyticsProperties = Record<string, string | number | boolean | undefined>;
 

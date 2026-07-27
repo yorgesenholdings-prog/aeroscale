@@ -5,7 +5,7 @@ export function ProjectPriceBlock({ price }: { price: number }) {
   return (
     <section className="bg-surface py-10">
       <div className="container-page max-w-3xl">
-        <div className="flex flex-col items-start justify-between gap-6 rounded-2xl border border-border-subtle bg-white p-6 shadow-sm sm:flex-row sm:items-center sm:p-8">
+        <div className="flex flex-col items-start justify-between gap-6 rounded-[18px] bg-white p-6 shadow-[0_1px_3px_rgba(20,20,26,0.04)] sm:flex-row sm:items-center sm:p-8">
           <div>
             <span className="text-xs font-bold uppercase tracking-widest text-teal-text">
               Project fee

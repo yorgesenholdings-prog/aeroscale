@@ -1,11 +1,11 @@
 import Link from "next/link";
 import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from "react";
 
-type ButtonVariant = "primary" | "secondary" | "ghost";
+type ButtonVariant = "primary" | "secondary" | "ghost" | "onDark";
 type ButtonSize = "md" | "lg";
 
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-lg font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 disabled:opacity-60 disabled:pointer-events-none";
+  "inline-flex items-center justify-center gap-2 rounded-lg font-semibold transition-[transform,box-shadow,background-color,border-color] duration-200 ease-out focus-visible:outline-2 focus-visible:outline-offset-2 disabled:opacity-60 disabled:pointer-events-none disabled:hover:translate-y-0 disabled:hover:shadow-none";
 
 const sizes: Record<ButtonSize, string> = {
   md: "px-5 py-2.5 text-sm",
@@ -13,10 +13,13 @@ const sizes: Record<ButtonSize, string> = {
 };
 
 const variants: Record<ButtonVariant, string> = {
-  primary: "bg-brand-teal text-teal-on-dark hover:bg-brand-teal-dark",
+  primary:
+    "bg-brand-slate text-white shadow-[0_1px_2px_rgba(20,20,26,0.08)] hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(20,20,26,0.18)]",
   secondary:
-    "bg-white text-brand-slate border border-brand-slate hover:bg-surface-muted",
+    "bg-transparent text-brand-slate border-[1.5px] border-slate-muted hover:border-brand-slate hover:bg-surface-muted",
   ghost: "bg-transparent text-brand-slate hover:bg-surface-muted",
+  /** For CTAs placed on a dark/featured card — light accent fill, no shadow. */
+  onDark: "bg-teal-on-slate text-brand-slate hover:-translate-y-0.5 hover:brightness-105",
 };
 
 interface CommonProps {

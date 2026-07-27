@@ -2,25 +2,35 @@
 
 import { Button } from "@/components/ui/Button";
 import { Eyebrow } from "@/components/ui/Eyebrow";
-import { HeroDiagram } from "@/components/sections/HeroDiagram";
+import { HeroActivityFeed } from "@/components/sections/HeroActivityFeed";
 import { trackEvent } from "@/lib/analytics";
 
 export function Hero() {
   return (
-    <section className="border-b border-border-subtle bg-white">
-      <div className="container-page grid grid-cols-1 items-center gap-12 py-16 md:py-24 lg:grid-cols-2 lg:gap-16">
+    <section className="bg-white">
+      <div className="container-page grid grid-cols-1 items-center gap-10 py-14 md:py-20 lg:grid-cols-[1.15fr_0.85fr] lg:gap-10 lg:py-24">
         <div>
-          <Eyebrow>SMALL BUSINESS CONSULTING + SUPPORT</Eyebrow>
-          <h1 className="mt-4 text-4xl font-bold leading-tight tracking-tight text-brand-slate sm:text-5xl">
-            Build a stronger business from the inside out.
+          <Eyebrow className="animate-fade-up opacity-0">SMALL BUSINESS CONSULTING + SUPPORT</Eyebrow>
+          <h1
+            className="animate-fade-up mt-4 text-[clamp(2.6rem,4.6vw,4.1rem)] leading-[1.03] font-bold tracking-[-0.02em] text-brand-slate opacity-0"
+            style={{ animationDelay: "0.1s" }}
+          >
+            Build a <span className="text-brand-teal">stronger</span> business from the inside
+            out.
           </h1>
-          <p className="mt-6 text-lg leading-relaxed text-text-muted">
+          <p
+            className="animate-fade-up mt-6 max-w-lg text-lg leading-relaxed text-text-muted opacity-0"
+            style={{ animationDelay: "0.2s" }}
+          >
             AeroScale helps small business owners solve problems, improve operations,
             strengthen marketing, build better systems, understand their numbers, and complete
             the projects that keep getting pushed aside. Get the expertise and execution support
             you need without building every department in-house.
           </p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <div
+            className="animate-fade-up mt-8 flex flex-col gap-3 opacity-0 sm:flex-row sm:flex-wrap"
+            style={{ animationDelay: "0.3s" }}
+          >
             <Button
               href="/contact"
               size="lg"
@@ -36,21 +46,18 @@ export function Hero() {
             >
               Explore Our Services
             </Button>
-            <Button
-              href="/instant-quote"
-              variant="secondary"
-              size="lg"
-              onClick={() => trackEvent("hero_cta_clicked", { cta: "instant_quote" })}
-            >
-              Get an Instant Quote
-            </Button>
           </div>
-          <p className="mt-4 text-sm text-text-muted">
+          <p
+            className="animate-fade-up mt-4 text-sm text-text-muted opacity-0"
+            style={{ animationDelay: "0.3s" }}
+          >
             One-time projects and ongoing support plans available.
           </p>
         </div>
 
-        <HeroDiagram />
+        <div className="animate-fade-up opacity-0" style={{ animationDelay: "0.35s" }}>
+          <HeroActivityFeed />
+        </div>
       </div>
     </section>
   );

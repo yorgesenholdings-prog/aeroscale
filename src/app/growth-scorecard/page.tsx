@@ -17,7 +17,7 @@ export default function GrowthScorecardPage() {
         items={[{ name: "Home", path: "/" }, { name: "Growth Scorecard", path: "/growth-scorecard" }]}
       />
 
-      <section className="border-b border-border-subtle bg-white py-14 md:py-20">
+      <section className="bg-white py-14 md:py-20">
         <div className="container-page max-w-3xl">
           <span className="text-xs font-bold uppercase tracking-widest text-teal-text">
             FREE SMALL BUSINESS GROWTH SCORECARD

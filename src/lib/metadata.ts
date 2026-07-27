@@ -34,7 +34,7 @@ export function buildMetadata({ title, description, path, noIndex }: PageMetadat
       description,
     },
     robots: noIndex
-      ? { index: false, follow: false }
+      ? { index: false, follow: true }
       : { index: true, follow: true },
   };
 }

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight, Newspaper } from "lucide-react";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { IconBadge } from "@/components/ui/IconBadge";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { getSortedBlogPosts, formatBlogDate } from "@/config/blog";
 import { buildMetadata } from "@/lib/metadata";
 
@@ -20,7 +21,7 @@ export default function BlogPage() {
     <>
       <Breadcrumbs items={[{ name: "Home", path: "/" }, { name: "Blog", path: "/blog" }]} />
 
-      <section className="border-b border-border-subtle bg-white py-16 md:py-24">
+      <section className="bg-white py-16 md:py-24">
         <div className="container-page max-w-3xl">
           <span className="text-xs font-bold uppercase tracking-widest text-teal-text">
             FROM THE BLOG
@@ -38,7 +39,7 @@ export default function BlogPage() {
       <section className="bg-surface py-16 md:py-24">
         <div className="container-page">
           {posts.length === 0 ? (
-            <div className="mx-auto flex max-w-xl flex-col items-center rounded-2xl border border-dashed border-border-subtle bg-white p-10 text-center">
+            <div className="mx-auto flex max-w-xl flex-col items-center rounded-[20px] border border-dashed border-slate-muted bg-white p-10 text-center">
               <IconBadge icon={Newspaper} size="lg" />
               <h2 className="mt-4 text-xl font-bold text-brand-slate">
                 New posts are on the way.
@@ -53,26 +54,27 @@ export default function BlogPage() {
             </div>
           ) : (
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {posts.map((post) => (
-                <Link
-                  key={post.slug}
-                  href={`/blog/${post.slug}`}
-                  className="group flex flex-col rounded-xl border border-border-subtle bg-white p-6 shadow-sm transition-all hover:-translate-y-0.5 hover:border-teal-text hover:shadow-md"
-                >
-                  <time dateTime={post.date} className="text-xs font-semibold uppercase tracking-wide text-text-muted">
-                    {formatBlogDate(post.date)}
-                  </time>
-                  <h2 className="mt-2 text-lg font-semibold text-brand-slate group-hover:text-teal-text">
-                    {post.title}
-                  </h2>
-                  <p className="mt-2 flex-1 text-sm leading-relaxed text-text-muted">
-                    {post.excerpt}
-                  </p>
-                  <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-teal-text">
-                    Read more
-                    <ArrowRight size={16} aria-hidden="true" className="transition-transform group-hover:translate-x-1" />
-                  </span>
-                </Link>
+              {posts.map((post, index) => (
+                <ScrollReveal key={post.slug} index={index % 6}>
+                  <Link
+                    href={`/blog/${post.slug}`}
+                    className="group flex h-full flex-col rounded-[18px] bg-white p-6 shadow-[0_1px_3px_rgba(20,20,26,0.04)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(20,20,26,0.1)]"
+                  >
+                    <time dateTime={post.date} className="text-xs font-semibold uppercase tracking-wide text-text-muted">
+                      {formatBlogDate(post.date)}
+                    </time>
+                    <h2 className="mt-2 text-lg font-semibold text-brand-slate group-hover:text-teal-text">
+                      {post.title}
+                    </h2>
+                    <p className="mt-2 flex-1 text-sm leading-relaxed text-text-muted">
+                      {post.excerpt}
+                    </p>
+                    <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-teal-text">
+                      Read more
+                      <ArrowRight size={16} aria-hidden="true" className="transition-transform group-hover:translate-x-1" />
+                    </span>
+                  </Link>
+                </ScrollReveal>
               ))}
             </div>
           )}

@@ -2,6 +2,7 @@ import { Compass, ListTodo, UserPlus, Layers, LineChart } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { IconBadge } from "@/components/ui/IconBadge";
 import { Card } from "@/components/ui/Card";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
 const painPoints = [
   {
@@ -42,12 +43,14 @@ export function PainPoints() {
         />
 
         <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {painPoints.map((point) => (
-            <Card key={point.title}>
-              <IconBadge icon={point.icon} />
-              <h3 className="mt-4 text-base font-semibold text-brand-slate">{point.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-text-muted">{point.copy}</p>
-            </Card>
+          {painPoints.map((point, index) => (
+            <ScrollReveal key={point.title} index={index}>
+              <Card>
+                <IconBadge icon={point.icon} />
+                <h3 className="mt-4 text-base font-semibold text-brand-slate">{point.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-text-muted">{point.copy}</p>
+              </Card>
+            </ScrollReveal>
           ))}
         </div>
 

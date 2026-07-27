@@ -2,6 +2,7 @@
 
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { trackEvent } from "@/lib/analytics";
 
 const steps = [
@@ -42,16 +43,16 @@ export function ProcessSteps() {
 
         <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {steps.map((step, index) => (
-            <div key={step.number} className="relative">
+            <ScrollReveal key={step.number} index={index} className="relative">
               <div className="flex items-center gap-3">
-                <span className="text-3xl font-bold text-brand-slate">{step.number}</span>
+                <span className="font-display text-3xl font-bold text-brand-slate">{step.number}</span>
                 {index < steps.length - 1 && (
                   <span aria-hidden="true" className="hidden h-px flex-1 bg-brand-teal/40 lg:block" />
                 )}
               </div>
               <h3 className="mt-3 text-lg font-semibold text-brand-slate">{step.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-text-muted">{step.description}</p>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
 

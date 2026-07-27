@@ -84,7 +84,7 @@ export function Header() {
             {desktopServicesOpen && (
               <div
                 role="menu"
-                className="absolute left-1/2 top-full z-50 mt-2 w-[38rem] -translate-x-1/2 rounded-xl border border-border-subtle bg-white p-5 shadow-lg"
+                className="absolute top-full left-1/2 z-50 mt-2 w-[38rem] -translate-x-1/2 rounded-[20px] bg-white p-5 shadow-[0_20px_40px_rgba(20,20,26,0.12)]"
               >
                 <div className="grid grid-cols-2 gap-6">
                   <div>
@@ -150,14 +150,6 @@ export function Header() {
         </nav>
 
         <div className="hidden items-center gap-2 lg:flex">
-          <Button
-            href="/instant-quote"
-            variant="secondary"
-            size="md"
-            onClick={() => trackEvent("assessment_cta_clicked", { location: "header_instant_quote" })}
-          >
-            Instant Quote
-          </Button>
           <Button
             href={primaryCta.href}
             size="md"
@@ -261,16 +253,7 @@ export function Header() {
               </Link>
             ))}
 
-            <Button
-              href="/instant-quote"
-              variant="secondary"
-              size="md"
-              className="mt-3 w-full"
-              onClick={closeAll}
-            >
-              Instant Quote
-            </Button>
-            <Button href={primaryCta.href} size="md" className="mt-2 w-full" onClick={closeAll}>
+            <Button href={primaryCta.href} size="md" className="mt-3 w-full" onClick={closeAll}>
               {primaryCta.label}
             </Button>
           </nav>

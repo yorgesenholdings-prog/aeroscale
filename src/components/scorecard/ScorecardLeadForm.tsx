@@ -88,7 +88,7 @@ export function ScorecardLeadForm({ results, band }: ScorecardLeadFormProps) {
 
   if (status === "success") {
     return (
-      <div className="flex items-start gap-3 rounded-xl border border-border-subtle bg-white p-6">
+      <div className="flex items-start gap-3 rounded-2xl bg-white p-6 shadow-[0_1px_3px_rgba(20,20,26,0.04)]">
         <CheckCircle2 size={22} aria-hidden="true" className="mt-0.5 shrink-0 text-teal-text" />
         <div>
           <p className="font-semibold text-brand-slate">Your request has been received.</p>
@@ -101,7 +101,7 @@ export function ScorecardLeadForm({ results, band }: ScorecardLeadFormProps) {
   }
 
   return (
-    <form onSubmit={handleSubmit} noValidate className="space-y-5 rounded-xl border border-border-subtle bg-white p-6">
+    <form onSubmit={handleSubmit} noValidate className="space-y-5 rounded-2xl bg-white p-6 shadow-[0_1px_3px_rgba(20,20,26,0.04)]">
       <div>
         <input
           type="text"

@@ -3,9 +3,12 @@ import { Info } from "lucide-react";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Button } from "@/components/ui/Button";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { BundleCard } from "@/components/services/BundleCard";
 import { bundles } from "@/config/bundles";
 import { buildMetadata } from "@/lib/metadata";
+
+const FEATURED_BUNDLE_INDEX = 1;
 
 export const metadata: Metadata = buildMetadata({
   title: "Popular Support Bundles | AeroScale",
@@ -19,7 +22,7 @@ export default function BundlesPage() {
     <>
       <Breadcrumbs items={[{ name: "Home", path: "/" }, { name: "Bundles", path: "/bundles" }]} />
 
-      <section className="border-b border-border-subtle bg-white py-16 md:py-24">
+      <section className="bg-white py-16 md:py-24">
         <div className="container-page max-w-3xl">
           <span className="text-xs font-bold uppercase tracking-widest text-teal-text">
             POPULAR COMBINATIONS
@@ -29,19 +32,18 @@ export default function BundlesPage() {
           </h1>
           <p className="mt-6 text-lg leading-relaxed text-text-muted">
             These are common combinations of AeroScale&apos;s recurring Support services — not fixed
-            packages. Use a bundle as a starting point, swap any service out, or build your own
-            combination on the{" "}
-            <a href="/instant-quote" className="font-semibold text-teal-text hover:text-teal-text-dark">
-              Instant Quote
+            packages. Use a bundle as a starting point, swap any service out, or{" "}
+            <a href="/contact" className="font-semibold text-teal-text hover:text-teal-text-dark">
+              contact us
             </a>{" "}
-            page.
+            to build your own combination.
           </p>
         </div>
       </section>
 
       <section className="bg-surface py-10">
         <div className="container-page max-w-3xl">
-          <div className="flex items-start gap-3 rounded-xl border border-border-subtle bg-white p-5">
+          <div className="flex items-start gap-3 rounded-2xl bg-white p-5 shadow-[0_1px_3px_rgba(20,20,26,0.04)]">
             <Info size={20} aria-hidden="true" className="mt-0.5 shrink-0 text-teal-text" />
             <p className="text-sm leading-relaxed text-text-muted">
               <span className="font-semibold text-text-primary">How the discount works: </span>
@@ -55,27 +57,29 @@ export default function BundlesPage() {
 
       <section className="bg-white py-16 md:py-24">
         <div className="container-page">
-          <SectionHeading eyebrow="THREE MOST POPULAR BUNDLES" heading="Choose a starting combination" />
-          <div className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-3">
-            {bundles.map((bundle) => (
-              <BundleCard key={bundle.slug} bundle={bundle} />
+          <SectionHeading eyebrow="THREE POPULAR BUNDLES" heading="Choose a starting combination" />
+          <div className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-3 lg:items-start">
+            {bundles.map((bundle, index) => (
+              <ScrollReveal key={bundle.slug} index={index}>
+                <BundleCard bundle={bundle} featured={index === FEATURED_BUNDLE_INDEX} />
+              </ScrollReveal>
             ))}
           </div>
         </div>
       </section>
 
       <section className="bg-surface py-16 md:py-24">
-        <div className="container-page flex flex-col items-start gap-6 rounded-2xl bg-brand-slate p-8 text-white sm:p-12 md:flex-row md:items-center md:justify-between">
+        <div className="container-page flex flex-col items-start gap-6 rounded-[20px] bg-brand-slate p-8 text-white sm:p-12 md:flex-row md:items-center md:justify-between">
           <div className="max-w-xl">
             <h2 className="text-2xl font-bold text-white sm:text-3xl">
-              Want an exact price for your own combination?
+              Not sure which combination fits your business?
             </h2>
             <p className="mt-3 text-white/80">
-              Build a custom quote with the services and tiers you actually need.
+              Request a free assessment and we&apos;ll recommend where to start.
             </p>
           </div>
-          <Button href="/instant-quote" size="lg" className="shrink-0">
-            Get an Instant Quote
+          <Button href="/contact" size="lg" className="shrink-0">
+            Get a Free Business Assessment
           </Button>
         </div>
       </section>

@@ -1,49 +1,57 @@
 @import "tailwindcss";
 
 /*
- * AeroScale brand tokens.
- * Approximate visual usage across the site: 60% white/light surfaces,
- * 30% Slate Blue structure, 10% Electric Teal accents.
+ * AeroScale brand tokens — charcoal / cobalt redesign.
+ * Ink (near-black charcoal) carries structure and primary actions;
+ * cobalt is used only as an accent (links, tags, highlights, emphasis).
  */
 :root {
   --color-white: #ffffff;
-  --color-brand-slate: #3a4f66;
-  --color-brand-slate-dark: #2d4054;
-  --color-brand-teal: #00a896;
-  --color-brand-teal-dark: #008c7d;
-  --color-text-primary: #1f2933;
-  --color-text-muted: #5f6b76;
-  --color-surface: #f7f9fa;
-  --color-surface-muted: #eef2f5;
-  --color-border-subtle: #dce3e8;
-  --color-disabled: #e8edf0;
-  --color-teal-on-dark: #102a2a;
+  --color-brand-slate: #14141a;
+  --color-brand-slate-dark: #0a0a0d;
+  --color-brand-slate-secondary: #24242e;
+  --color-brand-teal: #3e63f0;
+  --color-brand-teal-dark: #2f4fd1;
+  --color-text-primary: #14141a;
+  --color-text-muted: #5b5f6b;
+  --color-slate-muted: #a8acb8;
+  --color-surface: #f6f7f9;
+  --color-surface-muted: #ececf1;
+  --color-border-subtle: #e2e4ea;
+  --color-disabled: #e8e9ed;
+  --color-teal-on-dark: #ffffff;
   --color-error: #b3261e;
   --color-error-surface: #fbeceb;
 
   /*
-   * Accessible teal variants for TEXT (not backgrounds/icons-in-badges).
-   * The base --color-brand-teal fails WCAG AA as a text color on white
-   * (2.98:1) and on Slate Blue (2.83:1). These pass 4.5:1+ against the
-   * light surfaces and dark slate this site actually uses.
+   * Cobalt passes WCAG AA (4.94:1) as text on white/light surfaces, so it's
+   * used directly rather than needing a separate darkened "safe" shade.
+   * On dark ink surfaces, cobalt itself only reaches ~3.7:1 (large-text only),
+   * so --color-teal-on-slate (the lighter accent) is used there instead —
+   * it clears 9.5:1 against ink.
    */
-  --color-teal-text: #007567;
-  --color-teal-text-dark: #005c52;
-  --color-teal-on-slate: #33c9b8;
+  --color-teal-text: #3e63f0;
+  --color-teal-text-dark: #2f4fd1;
+  --color-teal-on-slate: #a6b8fb;
+  --color-accent-pale: #e7ecfe;
 
   --font-sans:
-    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
-    Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji";
+  --font-display: var(--font-space-grotesk), var(--font-sans);
 }
 
 @theme inline {
   --color-white: var(--color-white);
   --color-brand-slate: var(--color-brand-slate);
   --color-brand-slate-dark: var(--color-brand-slate-dark);
+  --color-brand-slate-secondary: var(--color-brand-slate-secondary);
   --color-brand-teal: var(--color-brand-teal);
   --color-brand-teal-dark: var(--color-brand-teal-dark);
   --color-text-primary: var(--color-text-primary);
   --color-text-muted: var(--color-text-muted);
+  --color-slate-muted: var(--color-slate-muted);
   --color-surface: var(--color-surface);
   --color-surface-muted: var(--color-surface-muted);
   --color-border-subtle: var(--color-border-subtle);
@@ -52,14 +60,20 @@
   --color-teal-text: var(--color-teal-text);
   --color-teal-text-dark: var(--color-teal-text-dark);
   --color-teal-on-slate: var(--color-teal-on-slate);
+  --color-accent-pale: var(--color-accent-pale);
   --color-error: var(--color-error);
   --color-error-surface: var(--color-error-surface);
   --font-sans: var(--font-sans);
+  --font-display: var(--font-display);
 }
 
 @layer base {
   * {
     border-color: var(--color-border-subtle);
+  }
+
+  html {
+    scroll-behavior: smooth;
   }
 
   body {
@@ -73,6 +87,8 @@
   h3,
   h4 {
     color: var(--color-brand-slate);
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
   }
 
   a {
@@ -114,5 +130,22 @@
     .container-page {
       padding-inline: 2rem;
     }
+  }
+}
+
+@layer utilities {
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-up {
+    animation: fade-up 0.7s ease forwards;
   }
 }
