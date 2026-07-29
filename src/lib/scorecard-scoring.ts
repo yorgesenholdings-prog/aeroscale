@@ -7,14 +7,12 @@ export interface CategoryScoreResult {
   key: ScorecardCategoryKey;
   label: string;
   score: number;
-  relatedServiceSlugs: string[];
 }
 
 export interface ScorecardComputedResults {
   overallScore: number;
   categoryScores: CategoryScoreResult[];
   weakestCategories: CategoryScoreResult[];
-  recommendedServiceSlugs: string[];
 }
 
 const MAX_OPTION_SCORE = 3;
@@ -30,7 +28,6 @@ export function computeScorecardResults(answers: ScorecardAnswers): ScorecardCom
       key: category.key,
       label: category.label,
       score,
-      relatedServiceSlugs: category.relatedServiceSlugs,
     };
   });
 
@@ -40,11 +37,7 @@ export function computeScorecardResults(answers: ScorecardAnswers): ScorecardCom
 
   const weakestCategories = [...categoryScores].sort((a, b) => a.score - b.score).slice(0, 3);
 
-  const recommendedServiceSlugs = Array.from(
-    new Set(weakestCategories.flatMap((category) => category.relatedServiceSlugs))
-  );
-
-  return { overallScore, categoryScores, weakestCategories, recommendedServiceSlugs };
+  return { overallScore, categoryScores, weakestCategories };
 }
 
 export function isScorecardComplete(answers: ScorecardAnswers): boolean {

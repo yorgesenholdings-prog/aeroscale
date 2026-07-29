@@ -9,14 +9,14 @@ export const SCORECARD_ANSWER_OPTIONS: ScorecardAnswerOption[] = [
 ];
 
 export const scorecardCategories: ScorecardCategoryMeta[] = [
-  { key: "strategy", label: "Strategy & Planning", relatedServiceSlugs: ["strategic-planning", "quarterly-planning"] },
-  { key: "marketing", label: "Marketing & Lead Generation", relatedServiceSlugs: ["marketing-strategy", "advertising-setup"] },
-  { key: "sales", label: "Sales & Follow-Up", relatedServiceSlugs: ["automation-implementation"] },
-  { key: "operations", label: "Operations & Systems", relatedServiceSlugs: ["automation-implementation", "sop-development"] },
-  { key: "sops", label: "SOPs & Delegation", relatedServiceSlugs: ["sop-development"] },
-  { key: "data", label: "Data & Reporting", relatedServiceSlugs: ["data-dashboards"] },
-  { key: "ownerDependence", label: "Owner Dependence", relatedServiceSlugs: ["sop-development", "owner-advisory-support"] },
-  { key: "growthReadiness", label: "Growth Readiness", relatedServiceSlugs: ["strategic-planning", "monthly-strategy-support"] },
+  { key: "strategy", label: "Strategy & Planning" },
+  { key: "marketing", label: "Marketing & Lead Generation" },
+  { key: "sales", label: "Sales & Follow-Up" },
+  { key: "operations", label: "Operations & Systems" },
+  { key: "sops", label: "SOPs & Delegation" },
+  { key: "data", label: "Data & Reporting" },
+  { key: "ownerDependence", label: "Owner Dependence" },
+  { key: "growthReadiness", label: "Growth Readiness" },
 ];
 
 export const scorecardQuestions: ScorecardQuestion[] = [

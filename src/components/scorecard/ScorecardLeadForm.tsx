@@ -71,7 +71,6 @@ export function ScorecardLeadForm({ results, band }: ScorecardLeadFormProps) {
               score: c.score,
             })),
             weakestCategories: results.weakestCategories.map((c) => c.label),
-            recommendedServiceSlugs: results.recommendedServiceSlugs,
           },
         }),
       });

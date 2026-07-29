@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Hero } from "@/components/sections/Hero";
 import { PainPoints } from "@/components/sections/PainPoints";
 import { FeaturedOffers } from "@/components/sections/FeaturedOffers";
-import { EngagementModels } from "@/components/sections/EngagementModels";
 import { Outcomes } from "@/components/sections/Outcomes";
 import { ProcessSteps } from "@/components/sections/ProcessSteps";
 import { BusinessSupport } from "@/components/sections/BusinessSupport";
@@ -25,7 +24,6 @@ export default function Home() {
       <JsonLd data={professionalServiceJsonLd()} />
       <Hero />
       <FeaturedOffers />
-      <EngagementModels />
       <PainPoints />
       <Outcomes />
       <ProcessSteps />

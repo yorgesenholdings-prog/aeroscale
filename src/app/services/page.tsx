@@ -10,7 +10,7 @@ import { buildMetadata } from "@/lib/metadata";
 export const metadata: Metadata = buildMetadata({
   title: "Small Business Consulting Services | AeroScale",
   description:
-    "AeroScale's small business consulting services fall into two categories: one-time Projects and ongoing Support. Explore both to find the right starting point.",
+    "AeroScale's small business consulting services: Review Follow-Up Automation and Ad Optimization, standalone or as part of a full growth system.",
   path: "/services",
 });
 
@@ -21,19 +21,9 @@ const servicesFaqs = [
       "Most engagements start with a conversation about the problem you're trying to solve, not a specific service. Request a free business assessment and we'll recommend where to start based on your goals, resources, and urgency.",
   },
   {
-    question: "What's the difference between Projects and Support?",
+    question: "Can I hire AeroScale for just one of these services?",
     answer:
-      "Projects are one-time engagements with a defined scope and endpoint, each priced as a flat fee. Support is ongoing, recurring work billed monthly at a tier that matches how much help you need.",
-  },
-  {
-    question: "Do I have to choose between a project and ongoing support up front?",
-    answer:
-      "No. Many clients start with a single focused project and move into ongoing support afterward, once they see how the work fits together. Others start with ongoing support from the beginning.",
-  },
-  {
-    question: "Is there a discount for combining multiple Support services?",
-    answer:
-      "Yes. Combine 2–3 recurring Support services and get 10% off your combined monthly total, or combine 4 or more for 20% off. The discount applies automatically to whatever services you choose. See example combinations on the Bundles page.",
+      "Yes. Both Review Follow-Up Automation and Ad Optimization Service are available on their own, billed monthly with no long-term contract.",
   },
 ];
 
@@ -51,34 +41,15 @@ export default function ServicesPage() {
             Support for the strategy, systems, and work behind small business growth.
           </h1>
           <p className="mt-6 text-lg leading-relaxed text-text-muted">
-            Most clients start with one of the two core services below. Need something more
-            specific? The full range of one-time projects and ongoing support is also available
-            further down.
+            AeroScale&apos;s services are built around two focused, done-for-you systems — each
+            billed monthly with no long-term contract.
           </p>
         </div>
       </section>
 
       <FeaturedOffers />
 
-      <section className="bg-surface py-16 md:py-20">
-        <div className="container-page max-w-2xl">
-          <SectionHeading
-            heading="Looking for additional services?"
-            supporting="Browse the full catalog of one-time projects and ongoing support."
-            align="center"
-          />
-          <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button href="/services/projects" variant="secondary" size="lg" className="w-full sm:w-auto">
-              Projects
-            </Button>
-            <Button href="/services/support" variant="secondary" size="lg" className="w-full sm:w-auto">
-              Support
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-white py-16 md:py-24">
+      <section className="bg-surface py-16 md:py-24">
         <div className="container-page max-w-3xl">
           <SectionHeading eyebrow="COMMON QUESTIONS" heading="Frequently asked questions" />
           <ScrollReveal className="mt-8">
@@ -87,7 +58,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="bg-surface py-16 md:py-24">
+      <section className="bg-white py-16 md:py-24">
         <div className="container-page flex flex-col items-start gap-6 rounded-[20px] bg-brand-slate p-8 text-white sm:p-12 md:flex-row md:items-center md:justify-between">
           <div className="max-w-xl">
             <h2 className="text-2xl font-bold text-white sm:text-3xl">

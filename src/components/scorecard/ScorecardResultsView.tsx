@@ -1,7 +1,4 @@
-import { ArrowRight } from "lucide-react";
-import Link from "next/link";
 import { ScorecardLeadForm } from "@/components/scorecard/ScorecardLeadForm";
-import { getServiceBySlug } from "@/config/services";
 import { getScoreBand } from "@/config/scorecard";
 import type { ScorecardComputedResults } from "@/lib/scorecard-scoring";
 
@@ -13,9 +10,6 @@ function scoreBarColor(score: number) {
 
 export function ScorecardResultsView({ results }: { results: ScorecardComputedResults }) {
   const band = getScoreBand(results.overallScore);
-  const recommendedServices = results.recommendedServiceSlugs
-    .map((slug) => getServiceBySlug(slug))
-    .filter((s): s is NonNullable<typeof s> => Boolean(s));
 
   return (
     <div className="space-y-10">
@@ -77,24 +71,6 @@ export function ScorecardResultsView({ results }: { results: ScorecardComputedRe
           ))}
         </ul>
       </div>
-
-      {recommendedServices.length > 0 && (
-        <div>
-          <h3 className="text-lg font-bold text-brand-slate">Recommended next steps</h3>
-          <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
-            {recommendedServices.map((service) => (
-              <Link
-                key={service.slug}
-                href={`/services/${service.category}/${service.slug}`}
-                className="group flex items-center justify-between rounded-2xl bg-white p-4 text-sm font-semibold text-brand-slate shadow-[0_1px_3px_rgba(20,20,26,0.04)] transition-shadow hover:shadow-[0_8px_20px_rgba(20,20,26,0.08)] hover:text-teal-text"
-              >
-                {service.name}
-                <ArrowRight size={16} aria-hidden="true" className="transition-transform group-hover:translate-x-1" />
-              </Link>
-            ))}
-          </div>
-        </div>
-      )}
 
       <p className="pt-6 text-xs leading-relaxed text-text-muted">
         The scorecard is an educational assessment, not a guarantee, valuation, financial

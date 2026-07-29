@@ -1,11 +1,7 @@
 import Link from "next/link";
 import { Logo } from "@/components/layout/Logo";
 import { siteConfig } from "@/config/site";
-import {
-  footerCompanyLinks,
-  footerLegalLinks,
-  footerServiceLinks,
-} from "@/config/navigation";
+import { footerCompanyLinks, footerLegalLinks } from "@/config/navigation";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -13,36 +9,18 @@ export function Footer() {
   return (
     <footer className="bg-brand-slate text-white">
       <div className="container-page py-12 md:py-16">
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-3">
-          <div className="md:col-span-1">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
+          <div>
             <Logo variant="white" />
             <p className="mt-4 text-sm text-white/80">{siteConfig.tagline}</p>
           </div>
 
-          <nav aria-label="Company" className="md:col-span-1">
+          <nav aria-label="Company">
             <h2 className="text-sm font-semibold uppercase tracking-wide text-white/60">
               Company
             </h2>
             <ul className="mt-4 space-y-2.5">
               {footerCompanyLinks.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-white/85 hover:text-teal-on-slate"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-
-          <nav aria-label="Services" className="md:col-span-1">
-            <h2 className="text-sm font-semibold uppercase tracking-wide text-white/60">
-              Services
-            </h2>
-            <ul className="mt-4 space-y-2.5">
-              {footerServiceLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}

@@ -85,7 +85,6 @@ export const scorecardResultsSchema = z.object({
   bandLabel: z.string().max(120),
   categoryScores: z.array(scorecardCategoryResultSchema),
   weakestCategories: z.array(z.string()).max(3),
-  recommendedServiceSlugs: z.array(z.string()),
 });
 
 export const contactFormSchema = z.object({

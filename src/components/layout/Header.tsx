@@ -1,15 +1,16 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
-import { ChevronDown, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Logo } from "@/components/layout/Logo";
 import { Button } from "@/components/ui/Button";
-import { primaryCta, projectNavLinks, supportNavLinks } from "@/config/navigation";
+import { primaryCta } from "@/config/navigation";
 import { trackEvent } from "@/lib/analytics";
 
-const navLinksBeforeServices = [{ label: "About", href: "/about" }];
-const navLinksAfterServices = [
+const navLinks = [
+  { label: "About", href: "/about" },
+  { label: "Services", href: "/services" },
   { label: "How It Works", href: "/#how-it-works" },
   { label: "Growth Scorecard", href: "/growth-scorecard" },
   { label: "Contact", href: "/contact" },
@@ -17,26 +18,15 @@ const navLinksAfterServices = [
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
-  const [desktopServicesOpen, setDesktopServicesOpen] = useState(false);
-  const servicesRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      if (servicesRef.current && !servicesRef.current.contains(event.target as Node)) {
-        setDesktopServicesOpen(false);
-      }
-    }
     function handleEscape(event: KeyboardEvent) {
       if (event.key === "Escape") {
-        setDesktopServicesOpen(false);
         setMobileOpen(false);
       }
     }
-    document.addEventListener("mousedown", handleClickOutside);
     document.addEventListener("keydown", handleEscape);
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
       document.removeEventListener("keydown", handleEscape);
     };
   }, []);
@@ -50,8 +40,6 @@ export function Header() {
 
   function closeAll() {
     setMobileOpen(false);
-    setMobileServicesOpen(false);
-    setDesktopServicesOpen(false);
   }
 
   return (
@@ -60,85 +48,7 @@ export function Header() {
         <Logo />
 
         <nav aria-label="Primary" className="hidden items-center gap-1 lg:flex">
-          {navLinksBeforeServices.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="rounded-md px-3 py-2 text-sm font-medium text-text-primary hover:text-teal-text"
-            >
-              {link.label}
-            </Link>
-          ))}
-
-          <div className="relative" ref={servicesRef}>
-            <button
-              type="button"
-              className="flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium text-text-primary hover:text-teal-text"
-              aria-haspopup="true"
-              aria-expanded={desktopServicesOpen}
-              onClick={() => setDesktopServicesOpen((open) => !open)}
-            >
-              Services
-              <ChevronDown size={16} aria-hidden="true" />
-            </button>
-            {desktopServicesOpen && (
-              <div
-                role="menu"
-                className="absolute top-full left-1/2 z-50 mt-2 w-[38rem] -translate-x-1/2 rounded-[20px] bg-white p-5 shadow-[0_20px_40px_rgba(20,20,26,0.12)]"
-              >
-                <div className="grid grid-cols-2 gap-6">
-                  <div>
-                    <p className="px-3 text-xs font-bold uppercase tracking-widest text-text-muted">
-                      Projects
-                    </p>
-                    <div className="mt-1.5 flex flex-col gap-0.5">
-                      {projectNavLinks.map((link) => (
-                        <Link
-                          key={link.href}
-                          href={link.href}
-                          role="menuitem"
-                          className="rounded-lg px-3 py-1.5 text-sm font-medium text-text-primary hover:bg-surface-muted hover:text-teal-text"
-                          onClick={closeAll}
-                        >
-                          {link.label}
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                  <div>
-                    <p className="px-3 text-xs font-bold uppercase tracking-widest text-text-muted">
-                      Support
-                    </p>
-                    <div className="mt-1.5 flex flex-col gap-0.5">
-                      {supportNavLinks.map((link) => (
-                        <Link
-                          key={link.href}
-                          href={link.href}
-                          role="menuitem"
-                          className="rounded-lg px-3 py-1.5 text-sm font-medium text-text-primary hover:bg-surface-muted hover:text-teal-text"
-                          onClick={closeAll}
-                        >
-                          {link.label}
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-                <div className="mt-3 border-t border-border-subtle pt-3">
-                  <Link
-                    href="/services"
-                    role="menuitem"
-                    className="block rounded-lg px-3 py-2 text-sm font-semibold text-teal-text hover:bg-surface-muted"
-                    onClick={closeAll}
-                  >
-                    View all services
-                  </Link>
-                </div>
-              </div>
-            )}
-          </div>
-
-          {navLinksAfterServices.map((link) => (
+          {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
@@ -174,75 +84,7 @@ export function Header() {
       {mobileOpen && (
         <div id="mobile-menu" className="max-h-[calc(100vh-4rem)] overflow-y-auto border-t border-border-subtle bg-white lg:hidden">
           <nav aria-label="Mobile" className="container-page flex flex-col gap-1 py-4">
-            <Link
-              href="/about"
-              className="rounded-md px-3 py-3 text-base font-medium text-text-primary hover:bg-surface-muted"
-              onClick={closeAll}
-            >
-              About
-            </Link>
-
-            <button
-              type="button"
-              className="flex items-center justify-between rounded-md px-3 py-3 text-base font-medium text-text-primary hover:bg-surface-muted"
-              aria-expanded={mobileServicesOpen}
-              aria-controls="mobile-services-panel"
-              onClick={() => setMobileServicesOpen((open) => !open)}
-            >
-              Services
-              <ChevronDown
-                size={18}
-                aria-hidden="true"
-                className={mobileServicesOpen ? "rotate-180 transition-transform" : "transition-transform"}
-              />
-            </button>
-            {mobileServicesOpen && (
-              <div id="mobile-services-panel" className="flex flex-col gap-4 pl-4">
-                <div>
-                  <p className="px-3 text-xs font-bold uppercase tracking-widest text-text-muted">
-                    Projects
-                  </p>
-                  <div className="mt-1 flex flex-col gap-1">
-                    {projectNavLinks.map((link) => (
-                      <Link
-                        key={link.href}
-                        href={link.href}
-                        className="rounded-md px-3 py-2 text-sm font-medium text-text-muted hover:bg-surface-muted hover:text-teal-text"
-                        onClick={closeAll}
-                      >
-                        {link.label}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-                <div>
-                  <p className="px-3 text-xs font-bold uppercase tracking-widest text-text-muted">
-                    Support
-                  </p>
-                  <div className="mt-1 flex flex-col gap-1">
-                    {supportNavLinks.map((link) => (
-                      <Link
-                        key={link.href}
-                        href={link.href}
-                        className="rounded-md px-3 py-2 text-sm font-medium text-text-muted hover:bg-surface-muted hover:text-teal-text"
-                        onClick={closeAll}
-                      >
-                        {link.label}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-                <Link
-                  href="/services"
-                  className="rounded-md px-3 py-2 text-sm font-semibold text-teal-text hover:bg-surface-muted"
-                  onClick={closeAll}
-                >
-                  View all services
-                </Link>
-              </div>
-            )}
-
-            {navLinksAfterServices.map((link) => (
+            {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
