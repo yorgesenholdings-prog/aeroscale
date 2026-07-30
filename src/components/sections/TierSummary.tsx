@@ -26,8 +26,8 @@ export function TierSummary() {
           ))}
         </div>
         <p className="mt-10 text-center text-sm text-text-muted">
-          Prefer to start smaller? Review Follow-Up Automation and Ad Optimization Service are
-          also available on their own —{" "}
+          Prefer to start smaller? Review Follow-Up & Review Response Automation and Ad
+          Optimization Service are also available on their own —{" "}
           <Link href="/services" className="font-semibold text-teal-text hover:text-teal-text-dark">
             see our standalone services
           </Link>

@@ -18,7 +18,7 @@ AeroScale is a small-business growth agency built around a **productized, tiered
 
 ### Tier 1 — Foundation — $499/month
 The low-commitment entry point. Proves value fast, lowest delivery complexity.
-- Review Follow-Up Automation (see standalone offer details below)
+- Review Follow-Up & Review Response Automation (see standalone offer details below)
 - Campaign Management (ads running + optimized — see Ad Optimization standalone offer below)
 - **Missed Call Text-Back** — automatically texts anyone whose call goes unanswered, so no inbound lead goes silent.
   - Included: automatic SMS trigger on any missed inbound call, customizable text template, immediate (near-instant) send, routes into the same GHL contact/lead record as everything else, basic reporting (missed calls captured, response rate).
@@ -60,12 +60,12 @@ Everything above, plus:
 Note: some states require disclosure that a caller is interacting with an AI, not a human — confirm applicable state rules before deploying the AI Receptionist to a client in a new state.
 
 ### Updated tier contents summary
-- **Tier 1 ($499/mo):** Review Follow-Up Automation + Ad Optimization Service + Missed Call Text-Back
+- **Tier 1 ($499/mo):** Review Follow-Up & Review Response Automation + Ad Optimization Service + Missed Call Text-Back
 - **Tier 2 ($999/mo):** everything in Tier 1 + Database Reactivation + AI Lead Nurturing
 - **Tier 3 ($2,199/mo):** everything in Tier 2 + AI Receptionist/Intake + Full Remarketing Sequences + Coaching/Consulting + Referral Program Automation
 
 ### Standalone Offers (still sold independently, also form the base of Tier 1)
-- **Review Follow-Up Automation** — $200/month. Builds and maintains an automated workflow that asks every customer for a review after a completed job. **Never implement "review gating"** (routing low-star ratings away from public platforms, only pushing high stars to Google) — this violates Google's review policy (enforced since April 2026) and the FTC's Consumer Review Rule (16 CFR Part 465). Every customer gets the same public review request regardless of rating, in every tier, for every client, in every niche.
+- **Review Follow-Up & Review Response Automation** — $200/month. Builds and maintains an automated workflow that asks every customer for a review after a completed job, **plus an automated public response posted to every review as it comes in** (positive or negative). **Never implement "review gating"** (routing low-star ratings away from public platforms, only pushing high stars to Google) — this violates Google's review policy (enforced since April 2026) and the FTC's Consumer Review Rule (16 CFR Part 465). Every customer gets the same public review request regardless of rating, and every review gets the same standard automated response regardless of rating — no differential treatment on either side of this offer, in every tier, for every client, in every niche. Responses are auto-posted, not held for client approval; reviews needing a real resolution (e.g. a complaint) should be followed up on by the client directly, not through the automated reply.
 - **Ad Optimization Service** — $400/month. Client already has an ad campaign with their own creative; AeroScale optimizes audience targeting, ad copy/messaging, and campaign settings, plus ongoing A/B testing and monthly reporting. Does NOT include ad creative design/production or building a campaign from scratch — make this exclusion explicit in any copy describing the offer.
 - **Missed Call Text-Back is NOT part of this standalone list** — see Tier 1 above. It is tier-exclusive only, never sold à la carte.
 
@@ -102,12 +102,12 @@ Since every client runs through AeroScale's own GHL instance, AeroScale's own A2
 
 All old URLs (`/services/projects/*`, `/services/support/*`, `/bundles`, `/instant-quote`) 308-redirect to `/pricing` (see `next.config.ts`).
 
-**The 3-tier system (Foundation / Growth System / Full System) plus the two standalone offers (Review Follow-Up Automation, Ad Optimization Service) are now the entire service offering.** Do not reference, link to, or resurrect the old catalog/bundles/instant-quote anywhere on the site — nav, footer, sitemap, or internal links.
+**The 3-tier system (Foundation / Growth System / Full System) plus the two standalone offers (Review Follow-Up & Review Response Automation, Ad Optimization Service) are now the entire service offering.** Do not reference, link to, or resurrect the old catalog/bundles/instant-quote anywhere on the site — nav, footer, sitemap, or internal links.
 
 ## Ad Landing Pages (Ad Traffic Only — Not Linked From Main Site)
 
 Unaffected by this pivot — still built around the two standalone offers:
-- `/lp/automation` — Review Follow-Up Automation, **$200/month only** (no tiers, no setup fee). No site nav/footer, noindex, excluded from sitemap.
+- `/lp/automation` — Review Follow-Up & Review Response Automation, **$200/month only** (no tiers, no setup fee). No site nav/footer, noindex, excluded from sitemap.
 - `/lp/marketing-management` — Ad Optimization Service, **$400/month only**, single campaign + A/B testing on an existing ad (not ad creation). Same no-nav/noindex rules.
 
 Each landing page includes: benefit headline matching ad copy, problem framing, plain pricing, 3-step "how it works," a clear "What's Included / Not Included" section, a short FAQ addressing objections, a trust/credibility section, and one repeated CTA (top/middle/bottom) to a contact form or booking calendar.

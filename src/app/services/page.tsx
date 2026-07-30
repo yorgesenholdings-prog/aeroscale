@@ -10,7 +10,7 @@ import { buildMetadata } from "@/lib/metadata";
 export const metadata: Metadata = buildMetadata({
   title: "Small Business Consulting Services | AeroScale",
   description:
-    "AeroScale's small business consulting services: Review Follow-Up Automation and Ad Optimization, standalone or as part of a full growth system.",
+    "AeroScale's small business consulting services: Review Follow-Up & Review Response Automation and Ad Optimization, standalone or as part of a full growth system.",
   path: "/services",
 });
 
@@ -23,7 +23,7 @@ const servicesFaqs = [
   {
     question: "Can I hire AeroScale for just one of these services?",
     answer:
-      "Yes. Both Review Follow-Up Automation and Ad Optimization Service are available on their own, billed monthly with no long-term contract.",
+      "Yes. Both Review Follow-Up & Review Response Automation and Ad Optimization Service are available on their own, billed monthly with no long-term contract.",
   },
 ];
 

@@ -39,14 +39,14 @@ export const landingPages: Record<LandingPageOfferSlug, LandingPageContent> = {
   automation: {
     slug: "automation",
     path: "/lp/automation",
-    metaTitle: "Review Follow-Up Automation | AeroScale",
+    metaTitle: "Review Follow-Up & Review Response Automation | AeroScale",
     metaDescription:
-      "Automated review follow-up for small businesses — $200/month. We build it, connect it to your existing customer data, and maintain it every month.",
-    offerLabel: "Review Follow-Up Automation",
-    eyebrow: "REVIEW FOLLOW-UP AUTOMATION",
+      "Automated review follow-up and response for small businesses — $200/month. We build it, connect it to your existing customer data, and maintain it every month.",
+    offerLabel: "Review Follow-Up & Review Response Automation",
+    eyebrow: "REVIEW FOLLOW-UP & RESPONSE AUTOMATION",
     headline: "Never Lose Another Review Because You Forgot to Ask",
     subheadline:
-      "We build and maintain an automated system that asks every customer for a review — automatically, every time.",
+      "We build and maintain an automated system that asks every customer for a review and automatically posts a response to every review that comes in — every time.",
     priceLabel: "$200/month",
     ctaLabel: "Get Started",
     problem: [
@@ -58,6 +58,7 @@ export const landingPages: Record<LandingPageOfferSlug, LandingPageContent> = {
       "A custom automated workflow that triggers a review request after every completed job or purchase",
       "Built to connect with your existing customer or job data — no manual list-building",
       "Live monitoring to confirm requests are actually going out",
+      "Automatic public response posted to every review you receive, positive or negative",
       "Ongoing monthly maintenance, so it keeps working as your tools or process change",
     ],
     howItWorks: [
@@ -79,13 +80,15 @@ export const landingPages: Record<LandingPageOfferSlug, LandingPageContent> = {
     ],
     included: [
       "Custom-built automated review follow-up workflow, connected to your existing customer/job data",
-      "Ongoing monitoring to confirm it's running correctly",
+      "Automatic public response posted to every incoming review — the same standard reply approach regardless of star rating, never selective",
+      "Ongoing monitoring to confirm both requests and responses are actually going out",
       "Monthly maintenance and updates",
       "Fixes if something breaks or stops sending",
     ],
     notIncluded: [
       "Building a CRM or job-tracking system from scratch if you don't already track customers/jobs somewhere",
-      "Writing responses to the reviews you receive",
+      "Custom, one-off written responses outside the standard automated reply templates",
+      "Personally handling reviews that need a real resolution (e.g. a service complaint) — those should be followed up on directly, not through the automated reply",
       "Managing your Google Business Profile or other review platforms directly",
       "One-time setup only — this is billed as an ongoing monthly service, not a single project",
     ],
@@ -109,6 +112,11 @@ export const landingPages: Record<LandingPageOfferSlug, LandingPageContent> = {
         question: "What if I don't have a CRM or customer list?",
         answer:
           "We'll work with whatever you have — even a spreadsheet. If you need help getting your customer data organized first, we can quote that separately; it's not included in the $200/month fee.",
+      },
+      {
+        question: "Do you write the responses to my reviews, or do I?",
+        answer:
+          "We handle it automatically. Every review gets the same standard public response regardless of star rating — we never write different responses to steer attention toward positive reviews or away from negative ones. If a review needs a real resolution, like a service complaint, we recommend following up with that customer directly rather than relying on the automated reply.",
       },
     ],
     trustHeading: "Why We Built This",

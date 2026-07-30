@@ -18,7 +18,11 @@ export const pricingTiers: PricingTierContent[] = [
     name: "Foundation",
     positioning: "The low-commitment entry point",
     priceLabel: "$499",
-    included: ["Review Follow-Up Automation", "Ad Optimization Service", "Missed Call Text-Back"],
+    included: [
+      "Review Follow-Up & Review Response Automation",
+      "Ad Optimization Service",
+      "Missed Call Text-Back",
+    ],
   },
   {
     slug: "growth-system",
@@ -27,7 +31,7 @@ export const pricingTiers: PricingTierContent[] = [
     positioning: "For businesses ready to compound growth",
     priceLabel: "$999",
     included: [
-      "Review Follow-Up Automation",
+      "Review Follow-Up & Review Response Automation",
       "Ad Optimization Service",
       "Missed Call Text-Back",
       "Database Reactivation",
@@ -42,7 +46,7 @@ export const pricingTiers: PricingTierContent[] = [
     positioning: "Run the whole system on autopilot",
     priceLabel: "$2,199",
     included: [
-      "Review Follow-Up Automation",
+      "Review Follow-Up & Review Response Automation",
       "Ad Optimization Service",
       "Missed Call Text-Back",
       "Database Reactivation",
