@@ -2,6 +2,7 @@ import type { NavLink } from "@/types";
 
 export const primaryNavLinks: NavLink[] = [
   { label: "About", href: "/about" },
+  { label: "Pricing", href: "/pricing" },
   { label: "Services", href: "/services" },
   { label: "How It Works", href: "/#how-it-works" },
   { label: "Growth Scorecard", href: "/growth-scorecard" },
@@ -15,6 +16,7 @@ export const primaryCta: NavLink = {
 
 export const footerCompanyLinks: NavLink[] = [
   { label: "About", href: "/about" },
+  { label: "Pricing", href: "/pricing" },
   { label: "Services", href: "/services" },
   { label: "Growth Scorecard", href: "/growth-scorecard" },
   { label: "Blog", href: "/blog" },

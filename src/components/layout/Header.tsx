@@ -5,16 +5,8 @@ import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { Logo } from "@/components/layout/Logo";
 import { Button } from "@/components/ui/Button";
-import { primaryCta } from "@/config/navigation";
+import { primaryCta, primaryNavLinks } from "@/config/navigation";
 import { trackEvent } from "@/lib/analytics";
-
-const navLinks = [
-  { label: "About", href: "/about" },
-  { label: "Services", href: "/services" },
-  { label: "How It Works", href: "/#how-it-works" },
-  { label: "Growth Scorecard", href: "/growth-scorecard" },
-  { label: "Contact", href: "/contact" },
-];
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -48,7 +40,7 @@ export function Header() {
         <Logo />
 
         <nav aria-label="Primary" className="hidden items-center gap-1 lg:flex">
-          {navLinks.map((link) => (
+          {primaryNavLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
@@ -84,7 +76,7 @@ export function Header() {
       {mobileOpen && (
         <div id="mobile-menu" className="max-h-[calc(100vh-4rem)] overflow-y-auto border-t border-border-subtle bg-white lg:hidden">
           <nav aria-label="Mobile" className="container-page flex flex-col gap-1 py-4">
-            {navLinks.map((link) => (
+            {primaryNavLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
