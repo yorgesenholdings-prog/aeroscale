@@ -47,62 +47,6 @@ export function buildOwnerNotificationEmail(data: ContactSubmission): {
   html: string;
   text: string;
 } {
-  if (data.formType === "contact") {
-    const subject = `New AeroScale business assessment request from ${data.businessName}`;
-    const rows = [
-      row("Name", data.fullName),
-      row("Work email", data.workEmail),
-      row("Phone", data.phone),
-      row("Business name", data.businessName),
-      row("Website", data.website),
-      row("Industry", data.industry),
-      row("Years in business", data.yearsInBusiness),
-      row("Employees", data.employeeCount),
-      row("Annual revenue", data.annualRevenue),
-      row("Services requested", data.servicesRequested.join(", ")),
-      row("Engagement preference", data.engagementPreference),
-      row("Desired timing", data.desiredTiming),
-      row("Referrer", data.referrerUrl),
-      row("UTM source", data.utm?.utm_source),
-      row("UTM medium", data.utm?.utm_medium),
-      row("UTM campaign", data.utm?.utm_campaign),
-      row("Submitted at", data.submittedAt),
-    ]
-      .filter(Boolean)
-      .join("");
-
-    const bodyHtml = `
-      <table role="presentation" width="100%">${rows}</table>
-      <h2 style="font-size:14px;color:#14141a;margin:20px 0 6px;">What's currently happening</h2>
-      <p style="font-size:13px;line-height:1.6;white-space:pre-wrap;">${escapeHtml(data.currentSituation)}</p>
-      ${
-        data.desiredOutcome
-          ? `<h2 style="font-size:14px;color:#14141a;margin:20px 0 6px;">Desired outcome</h2><p style="font-size:13px;line-height:1.6;white-space:pre-wrap;">${escapeHtml(
-              data.desiredOutcome
-            )}</p>`
-          : ""
-      }
-    `;
-
-    const text = [
-      `New AeroScale business assessment request from ${data.businessName}`,
-      `Name: ${data.fullName}`,
-      `Work email: ${data.workEmail}`,
-      data.phone && `Phone: ${data.phone}`,
-      `Business: ${data.businessName}`,
-      data.website && `Website: ${data.website}`,
-      `Industry: ${data.industry}`,
-      `Employees: ${data.employeeCount}`,
-      `Services requested: ${data.servicesRequested.join(", ")}`,
-      `What's currently happening: ${data.currentSituation}`,
-      data.desiredOutcome && `Desired outcome: ${data.desiredOutcome}`,
-    ]
-      .filter(Boolean)
-      .join("\n");
-
-    return { subject, html: emailShell(subject, bodyHtml), text };
-  }
-
   if (data.formType === "landingPage") {
     const subject = `New landing page lead (${data.offerLabel}) from ${data.businessName}`;
     const rows = [
@@ -183,18 +127,6 @@ export function buildProspectConfirmationEmail(data: ContactSubmission): {
   text: string;
 } {
   const firstName = data.fullName.trim().split(/\s+/)[0] || data.fullName;
-
-  if (data.formType === "contact") {
-    const subject = "We received your AeroScale assessment request";
-    const bodyHtml = `
-      <p style="font-size:14px;line-height:1.6;">Hi ${escapeHtml(firstName)},</p>
-      <p style="font-size:14px;line-height:1.6;">Thank you for contacting AeroScale. We received your request and will review the business challenge, project, or opportunity you described.</p>
-      <p style="font-size:14px;line-height:1.6;">We'll follow up with the most practical next step shortly.</p>
-      <p style="font-size:14px;line-height:1.6;">AeroScale<br/>The support system behind your business.</p>
-    `;
-    const text = `Hi ${firstName},\n\nThank you for contacting AeroScale. We received your request and will review the business challenge, project, or opportunity you described.\n\nWe'll follow up with the most practical next step shortly.\n\nAeroScale\nThe support system behind your business.`;
-    return { subject, html: emailShell(subject, bodyHtml), text };
-  }
 
   if (data.formType === "landingPage") {
     const subject = `We received your request — ${data.offerLabel}`;

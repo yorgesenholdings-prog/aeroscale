@@ -1,5 +1,6 @@
 import { Check } from "lucide-react";
-import { Button } from "@/components/ui/Button";
+import { CheckoutButton } from "@/components/checkout/CheckoutButton";
+import { MoneyBackBadge } from "@/components/checkout/MoneyBackBadge";
 import type { PricingTierContent } from "@/config/pricing-tiers";
 
 interface TierCardProps {
@@ -69,9 +70,10 @@ export function TierCard({ tier, ctaLabel, ctaHref }: TierCardProps) {
         ))}
       </ul>
 
-      <Button href={ctaHref} variant={isFeatured ? "onDark" : "primary"} size="lg" className="mt-8 w-full">
+      <CheckoutButton href={ctaHref} variant={isFeatured ? "onDark" : "primary"} size="lg" className="mt-8 w-full">
         {ctaLabel}
-      </Button>
+      </CheckoutButton>
+      <MoneyBackBadge tone={isFeatured ? "dark" : "light"} className="mt-3" />
     </div>
   );
 }

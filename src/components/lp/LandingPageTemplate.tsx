@@ -1,9 +1,10 @@
 import { Check, X } from "lucide-react";
-import { Button } from "@/components/ui/Button";
 import { FaqAccordion } from "@/components/ui/FaqAccordion";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { LandingPageHeader } from "@/components/lp/LandingPageHeader";
 import { LandingPageLeadForm } from "@/components/lp/LandingPageLeadForm";
+import { CheckoutButton } from "@/components/checkout/CheckoutButton";
+import { MoneyBackBadge } from "@/components/checkout/MoneyBackBadge";
 import type { LandingPageContent } from "@/config/landing-pages";
 
 export function LandingPageTemplate({ content }: { content: LandingPageContent }) {
@@ -27,9 +28,10 @@ export function LandingPageTemplate({ content }: { content: LandingPageContent }
           </div>
 
           <div className="mt-7">
-            <Button href="#get-started" size="lg" className="w-full sm:w-auto">
+            <CheckoutButton href={content.stripePaymentLink} size="lg" className="w-full sm:w-auto">
               {content.ctaLabel}
-            </Button>
+            </CheckoutButton>
+            <MoneyBackBadge className="mt-4 w-fit" />
           </div>
         </div>
       </section>
@@ -90,10 +92,11 @@ export function LandingPageTemplate({ content }: { content: LandingPageContent }
           <p className="text-lg font-semibold text-white">
             {content.priceLabel} — no setup fee, cancel anytime.
           </p>
-          <div className="mt-5">
-            <Button href="#get-started" size="lg" variant="onDark" className="w-full sm:w-auto">
+          <div className="mt-5 flex flex-col items-center">
+            <CheckoutButton href={content.stripePaymentLink} size="lg" variant="onDark" className="w-full sm:w-auto">
               {content.ctaLabel}
-            </Button>
+            </CheckoutButton>
+            <MoneyBackBadge tone="dark" className="mt-4" />
           </div>
         </div>
       </section>

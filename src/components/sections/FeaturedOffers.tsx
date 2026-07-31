@@ -3,6 +3,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { ChatSequenceVisual } from "@/components/sections/ChatSequenceVisual";
 import { AdOptimizationDashboardVisual } from "@/components/sections/AdOptimizationDashboardVisual";
+import { MoneyBackBadge } from "@/components/checkout/MoneyBackBadge";
 import { landingPages, type LandingPageOfferSlug } from "@/config/landing-pages";
 
 const featuredOfferSlugs: LandingPageOfferSlug[] = ["automation", "marketing-management"];
@@ -103,6 +104,7 @@ export function FeaturedOffers() {
                   >
                     {offer.ctaLabel}
                   </Button>
+                  <MoneyBackBadge tone={isFeatured ? "dark" : "light"} className="mt-4 w-fit" />
                 </div>
               </ScrollReveal>
             );

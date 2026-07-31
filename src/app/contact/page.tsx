@@ -4,9 +4,8 @@ import { ContactForm } from "@/components/contact/ContactForm";
 import { buildMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Contact a Small Business Consultant | AeroScale",
-  description:
-    "Tell AeroScale what's happening in your business and what outcome you're working toward. We'll review your request and recommend a practical next step.",
+  title: "Contact AeroScale",
+  description: "Send AeroScale a message and we'll get back to you shortly.",
   path: "/contact",
 });
 
@@ -19,22 +18,20 @@ export default function ContactPage() {
         <div className="container-page grid grid-cols-1 gap-12 lg:grid-cols-[1fr_1.4fr]">
           <div>
             <span className="text-xs font-bold uppercase tracking-widest text-teal-text">
-              GET A FREE BUSINESS ASSESSMENT
+              CONTACT US
             </span>
             <h1 className="mt-4 text-3xl font-bold leading-tight tracking-tight text-brand-slate sm:text-4xl">
               What would make your business easier to run or easier to grow?
             </h1>
             <p className="mt-5 text-base leading-relaxed text-text-muted">
-              Tell us what is happening in your business, what you have already tried, and what
-              outcome you are working toward. AeroScale will review your request and
-              recommend a practical next step.
+              Send us a message and we&apos;ll get back to you shortly.
             </p>
             <div className="mt-8 rounded-2xl bg-surface p-5 text-sm text-text-muted">
-              Prefer a guided assessment instead? Try the{" "}
+              Prefer a guided starting point? Try the{" "}
               <a href="/growth-scorecard" className="font-semibold text-teal-text hover:text-teal-text-dark">
                 free Growth Scorecard
               </a>{" "}
-              first — your answers can inform this request.
+              instead.
             </div>
           </div>
 

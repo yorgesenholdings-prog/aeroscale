@@ -1,3 +1,5 @@
+// TODO: replace PLACEHOLDER_* values once Stripe/Tally accounts exist.
+// Nothing else in the codebase needs to change.
 export const siteConfig = {
   name: "AeroScale",
   tagline: "The support system behind your business.",
@@ -9,6 +11,7 @@ export const siteConfig = {
     "AeroScale is a small business consulting and support company that helps owners solve problems, complete important projects, and build stronger businesses. We provide practical strategy and hands-on support across marketing, advertising, systems and automation, SOPs, business planning, market research, and data analytics through both one-time projects and ongoing monthly support.",
   url: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
   contactEmail: process.env.CONTACT_TO_EMAIL || "hello@aeroscale.com",
+  contactFormEndpoint: "PLACEHOLDER_CONTACT_FORM_ENDPOINT",
   ogImage: "/og-image.png",
   // Configurable organization details for structured data. Only include
   // fields that are actually accurate — do not invent address, phone,

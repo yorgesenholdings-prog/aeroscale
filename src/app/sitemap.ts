@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/config/site";
 import { blogPosts } from "@/config/blog";
+import { onboardingEntries } from "@/config/onboarding";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
@@ -24,5 +25,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...staticRoutes, ...blogRoutes];
+  const onboardingRoutes: MetadataRoute.Sitemap = onboardingEntries.map((entry) => ({
+    url: `${siteConfig.url}/onboarding/${entry.slug}`,
+    lastModified: now,
+    changeFrequency: "yearly",
+    priority: 0.3,
+  }));
+
+  return [...staticRoutes, ...blogRoutes, ...onboardingRoutes];
 }

@@ -1,5 +1,7 @@
 import { landingPageOfferSlugs } from "@/lib/contact-schema";
 
+// TODO: replace PLACEHOLDER_* values once Stripe/Tally accounts exist.
+// Nothing else in the codebase needs to change.
 export type LandingPageOfferSlug = (typeof landingPageOfferSlugs)[number];
 
 export interface LandingPageStep {
@@ -23,6 +25,10 @@ export interface LandingPageContent {
   subheadline: string;
   priceLabel: string;
   ctaLabel: string;
+  /** PLACEHOLDER — real Stripe Payment Link URL goes here. */
+  stripePaymentLink: string;
+  /** PLACEHOLDER — real Tally onboarding form embed URL goes here. */
+  onboardingFormEmbed: string;
   problem: string[];
   offerBullets: string[];
   howItWorks: LandingPageStep[];
@@ -49,6 +55,8 @@ export const landingPages: Record<LandingPageOfferSlug, LandingPageContent> = {
       "We build and maintain an automated system that asks every customer for a review and automatically posts a response to every review that comes in — every time.",
     priceLabel: "$200/month",
     ctaLabel: "Get Started",
+    stripePaymentLink: "PLACEHOLDER_STRIPE_LINK_REVIEW",
+    onboardingFormEmbed: "PLACEHOLDER_TALLY_EMBED_REVIEW",
     problem: [
       "Most business owners lose reviews for one simple reason: nobody asked at the right time.",
       "The job gets done, the invoice gets paid, and the follow-up message never gets sent — because there's no system for it, just a mental note that gets forgotten.",
@@ -118,6 +126,10 @@ export const landingPages: Record<LandingPageOfferSlug, LandingPageContent> = {
         answer:
           "We handle it automatically. Every review gets the same standard public response regardless of star rating — we never write different responses to steer attention toward positive reviews or away from negative ones. If a review needs a real resolution, like a service complaint, we recommend following up with that customer directly rather than relying on the automated reply.",
       },
+      {
+        question: "Is there a guarantee?",
+        answer: "Yes — this service comes with a 10-day money-back guarantee.",
+      },
     ],
     trustHeading: "Why We Built This",
     trustBody: [
@@ -140,6 +152,8 @@ export const landingPages: Record<LandingPageOfferSlug, LandingPageContent> = {
       "We optimize the targeting, messaging, and settings behind your existing ad campaign — then test it every month to keep improving performance.",
     priceLabel: "$400/month",
     ctaLabel: "Book a Free Call",
+    stripePaymentLink: "PLACEHOLDER_STRIPE_LINK_ADS",
+    onboardingFormEmbed: "PLACEHOLDER_TALLY_EMBED_ADS",
     problem: [
       "Most business owners set up an ad campaign once, launch it, and never touch it again.",
       "Meanwhile, the platform's default targeting, the ad copy, and the campaign settings are quietly leaving performance on the table — because nobody is testing or adjusting them.",
@@ -200,6 +214,10 @@ export const landingPages: Record<LandingPageOfferSlug, LandingPageContent> = {
         question: "What if I already tried optimizing this myself?",
         answer:
           "That's common — most owners make a few changes early on and then stop testing. We treat optimization as an ongoing process, not a one-time cleanup, which is what tends to move the numbers over time.",
+      },
+      {
+        question: "Is there a guarantee?",
+        answer: "Yes — this service comes with a 10-day money-back guarantee.",
       },
     ],
     trustHeading: "Why We Built This",

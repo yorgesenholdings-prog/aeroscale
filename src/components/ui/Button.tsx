@@ -1,8 +1,8 @@
 import Link from "next/link";
 import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from "react";
 
-type ButtonVariant = "primary" | "secondary" | "ghost" | "onDark";
-type ButtonSize = "md" | "lg";
+export type ButtonVariant = "primary" | "secondary" | "ghost" | "onDark";
+export type ButtonSize = "md" | "lg";
 
 const base =
   "inline-flex items-center justify-center gap-2 rounded-lg font-semibold transition-[transform,box-shadow,background-color,border-color] duration-200 ease-out focus-visible:outline-2 focus-visible:outline-offset-2 disabled:opacity-60 disabled:pointer-events-none disabled:hover:translate-y-0 disabled:hover:shadow-none";

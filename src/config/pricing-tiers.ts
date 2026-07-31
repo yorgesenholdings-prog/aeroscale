@@ -1,3 +1,5 @@
+// TODO: replace PLACEHOLDER_* values once Stripe/Tally accounts exist.
+// Nothing else in the codebase needs to change.
 export type PricingTierSlug = "foundation" | "growth-system" | "full-system";
 
 export interface PricingTierContent {
@@ -9,6 +11,10 @@ export interface PricingTierContent {
   included: string[];
   /** The middle tier gets the dark-card "recommended" treatment. */
   featured?: boolean;
+  /** PLACEHOLDER — real Stripe Payment Link URL goes here. */
+  stripePaymentLink: string;
+  /** PLACEHOLDER — real Tally onboarding form embed URL goes here. */
+  onboardingFormEmbed: string;
 }
 
 export const pricingTiers: PricingTierContent[] = [
@@ -23,6 +29,8 @@ export const pricingTiers: PricingTierContent[] = [
       "Ad Optimization Service",
       "Missed Call Text-Back",
     ],
+    stripePaymentLink: "PLACEHOLDER_STRIPE_LINK_FOUNDATION",
+    onboardingFormEmbed: "PLACEHOLDER_TALLY_EMBED_FOUNDATION",
   },
   {
     slug: "growth-system",
@@ -38,6 +46,8 @@ export const pricingTiers: PricingTierContent[] = [
       "AI Lead Nurturing",
     ],
     featured: true,
+    stripePaymentLink: "PLACEHOLDER_STRIPE_LINK_GROWTH",
+    onboardingFormEmbed: "PLACEHOLDER_TALLY_EMBED_GROWTH",
   },
   {
     slug: "full-system",
@@ -56,6 +66,8 @@ export const pricingTiers: PricingTierContent[] = [
       "Coaching/Consulting",
       "Referral Program Automation",
     ],
+    stripePaymentLink: "PLACEHOLDER_STRIPE_LINK_FULL",
+    onboardingFormEmbed: "PLACEHOLDER_TALLY_EMBED_FULL",
   },
 ];
 

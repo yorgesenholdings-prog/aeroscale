@@ -7,6 +7,7 @@ import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { FaqAccordion } from "@/components/ui/FaqAccordion";
 import { TierCard } from "@/components/pricing/TierCard";
 import { TierDetailAccordion } from "@/components/pricing/TierDetailAccordion";
+import { MoneyBackBadge } from "@/components/checkout/MoneyBackBadge";
 import { pricingTiers } from "@/config/pricing-tiers";
 import { landingPages } from "@/config/landing-pages";
 import { buildMetadata } from "@/lib/metadata";
@@ -53,7 +54,7 @@ const pricingFaqs = [
   {
     question: "What if I only want one service?",
     answer:
-      "Review Follow-Up Automation ($200/month) and Ad Optimization Service ($400/month) are both available on their own, outside of the tiers.",
+      "Review Follow-Up & Review Response Automation ($200/month) and Ad Optimization Service ($400/month) are both available on their own, outside of the tiers.",
   },
   {
     question: "How does billing work for usage costs like SMS and AI voice minutes?",
@@ -69,6 +70,11 @@ const pricingFaqs = [
     question: "Is there a setup fee?",
     answer:
       "No. Every tier is built once and deployed the same way for every client, so there's no separate setup charge — the monthly price is everything.",
+  },
+  {
+    question: "Is there a guarantee?",
+    answer:
+      "Yes — every tier and standalone service comes with a 10-day money-back guarantee.",
   },
 ];
 
@@ -96,7 +102,7 @@ export default function PricingPage() {
           <div className="grid grid-cols-1 gap-7 lg:grid-cols-3 lg:items-start">
             {pricingTiers.map((tier, index) => (
               <ScrollReveal key={tier.slug} index={index}>
-                <TierCard tier={tier} ctaLabel="Get Started" ctaHref="/contact" />
+                <TierCard tier={tier} ctaLabel="Get Started" ctaHref={tier.stripePaymentLink} />
               </ScrollReveal>
             ))}
           </div>
@@ -171,6 +177,7 @@ export default function PricingPage() {
                     <p className="font-display mt-4 text-2xl font-bold text-brand-slate">
                       {offer.priceLabel}
                     </p>
+                    <MoneyBackBadge className="mt-4" />
                   </div>
                 </ScrollReveal>
               );
