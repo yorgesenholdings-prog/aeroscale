@@ -39,6 +39,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`h-full antialiased ${inter.variable} ${spaceGrotesk.variable}`}>
+      <head>
+        {/* Google tag (gtag.js) — kept as a raw script (not next/third-parties) so it lands immediately after <head>, per Google's install instructions */}
+        {/* eslint-disable-next-line @next/next/next-script-for-ga */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-QG0T2451H5" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'G-QG0T2451H5');`,
+          }}
+        />
+      </head>
       <body className="flex min-h-full flex-col bg-white text-text-primary">
         <JsonLd data={organizationJsonLd()} />
         <JsonLd data={websiteJsonLd()} />
