@@ -10,8 +10,8 @@ export const primaryNavLinks: NavLink[] = [
 ];
 
 export const primaryCta: NavLink = {
-  label: "Get a Free Business Assessment",
-  href: "/contact",
+  label: "Get Started",
+  href: "/pricing",
 };
 
 export const footerCompanyLinks: NavLink[] = [

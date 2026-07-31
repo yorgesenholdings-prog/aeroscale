@@ -180,8 +180,8 @@ export default function AboutPage() {
               Tell us what&apos;s happening and we&apos;ll recommend a practical next step.
             </p>
           </div>
-          <Button href="/contact" size="lg" className="shrink-0">
-            Get a Free Business Assessment
+          <Button href="/pricing" size="lg" className="shrink-0">
+            Get Started
           </Button>
         </div>
       </section>

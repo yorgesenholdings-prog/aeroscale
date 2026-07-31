@@ -4,7 +4,6 @@ import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { LandingPageHeader } from "@/components/lp/LandingPageHeader";
 import { LandingPageLeadForm } from "@/components/lp/LandingPageLeadForm";
 import { CheckoutButton } from "@/components/checkout/CheckoutButton";
-import { MoneyBackBadge } from "@/components/checkout/MoneyBackBadge";
 import type { LandingPageContent } from "@/config/landing-pages";
 
 export function LandingPageTemplate({ content }: { content: LandingPageContent }) {
@@ -31,7 +30,6 @@ export function LandingPageTemplate({ content }: { content: LandingPageContent }
             <CheckoutButton href={content.stripePaymentLink} size="lg" className="w-full sm:w-auto">
               {content.ctaLabel}
             </CheckoutButton>
-            <MoneyBackBadge className="mt-4 w-fit" />
           </div>
         </div>
       </section>
@@ -92,11 +90,10 @@ export function LandingPageTemplate({ content }: { content: LandingPageContent }
           <p className="text-lg font-semibold text-white">
             {content.priceLabel} — no setup fee, cancel anytime.
           </p>
-          <div className="mt-5 flex flex-col items-center">
+          <div className="mt-5">
             <CheckoutButton href={content.stripePaymentLink} size="lg" variant="onDark" className="w-full sm:w-auto">
               {content.ctaLabel}
             </CheckoutButton>
-            <MoneyBackBadge tone="dark" className="mt-4" />
           </div>
         </div>
       </section>

@@ -58,11 +58,11 @@ export function ProcessSteps() {
 
         <div className="mt-12">
           <Button
-            href="/contact"
+            href="/pricing"
             size="lg"
             onClick={() => trackEvent("assessment_cta_clicked", { location: "how-it-works" })}
           >
-            Get a Free Business Assessment
+            Get Started
           </Button>
         </div>
       </div>

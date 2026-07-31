@@ -32,11 +32,11 @@ export function Hero() {
             style={{ animationDelay: "0.3s" }}
           >
             <Button
-              href="/contact"
+              href="/pricing"
               size="lg"
               onClick={() => trackEvent("hero_cta_clicked", { cta: "primary" })}
             >
-              Get a Free Business Assessment
+              Get Started
             </Button>
             <Button
               href="/services"

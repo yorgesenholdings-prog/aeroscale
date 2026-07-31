@@ -68,8 +68,8 @@ export default function ServicesPage() {
               Request a free assessment and we&apos;ll recommend where to start.
             </p>
           </div>
-          <Button href="/contact" size="lg" className="shrink-0">
-            Get a Free Business Assessment
+          <Button href="/pricing" size="lg" className="shrink-0">
+            Get Started
           </Button>
         </div>
       </section>

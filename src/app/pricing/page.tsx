@@ -7,7 +7,6 @@ import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { FaqAccordion } from "@/components/ui/FaqAccordion";
 import { TierCard } from "@/components/pricing/TierCard";
 import { TierDetailAccordion } from "@/components/pricing/TierDetailAccordion";
-import { MoneyBackBadge } from "@/components/checkout/MoneyBackBadge";
 import { pricingTiers } from "@/config/pricing-tiers";
 import { landingPages } from "@/config/landing-pages";
 import { buildMetadata } from "@/lib/metadata";
@@ -71,11 +70,6 @@ const pricingFaqs = [
     answer:
       "No. Every tier is built once and deployed the same way for every client, so there's no separate setup charge — the monthly price is everything.",
   },
-  {
-    question: "Is there a guarantee?",
-    answer:
-      "Yes — every tier and standalone service comes with a 10-day money-back guarantee.",
-  },
 ];
 
 export default function PricingPage() {
@@ -97,7 +91,7 @@ export default function PricingPage() {
         </div>
       </section>
 
-      <section className="bg-surface py-16 md:py-24">
+      <section id="tiers" className="scroll-mt-6 bg-surface py-16 md:py-24">
         <div className="container-page">
           <div className="grid grid-cols-1 gap-7 lg:grid-cols-3 lg:items-start">
             {pricingTiers.map((tier, index) => (
@@ -177,7 +171,6 @@ export default function PricingPage() {
                     <p className="font-display mt-4 text-2xl font-bold text-brand-slate">
                       {offer.priceLabel}
                     </p>
-                    <MoneyBackBadge className="mt-4" />
                   </div>
                 </ScrollReveal>
               );
@@ -204,14 +197,14 @@ export default function PricingPage() {
         <div className="container-page flex flex-col items-start gap-6 rounded-[20px] bg-brand-slate p-8 text-white sm:p-12 md:flex-row md:items-center md:justify-between">
           <div className="max-w-xl">
             <h2 className="text-2xl font-bold text-white sm:text-3xl">
-              Not sure which tier fits your business?
+              Ready to pick your plan?
             </h2>
             <p className="mt-3 text-white/80">
-              Request a free assessment and we&apos;ll recommend where to start.
+              Compare the three tiers above and get started with the one that fits.
             </p>
           </div>
-          <Button href="/contact" size="lg" className="shrink-0">
-            Get a Free Business Assessment
+          <Button href="#tiers" size="lg" className="shrink-0">
+            See the Plans
           </Button>
         </div>
       </section>

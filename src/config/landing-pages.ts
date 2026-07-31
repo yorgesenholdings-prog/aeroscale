@@ -126,10 +126,6 @@ export const landingPages: Record<LandingPageOfferSlug, LandingPageContent> = {
         answer:
           "We handle it automatically. Every review gets the same standard public response regardless of star rating — we never write different responses to steer attention toward positive reviews or away from negative ones. If a review needs a real resolution, like a service complaint, we recommend following up with that customer directly rather than relying on the automated reply.",
       },
-      {
-        question: "Is there a guarantee?",
-        answer: "Yes — this service comes with a 10-day money-back guarantee.",
-      },
     ],
     trustHeading: "Why We Built This",
     trustBody: [
@@ -214,10 +210,6 @@ export const landingPages: Record<LandingPageOfferSlug, LandingPageContent> = {
         question: "What if I already tried optimizing this myself?",
         answer:
           "That's common — most owners make a few changes early on and then stop testing. We treat optimization as an ongoing process, not a one-time cleanup, which is what tends to move the numbers over time.",
-      },
-      {
-        question: "Is there a guarantee?",
-        answer: "Yes — this service comes with a 10-day money-back guarantee.",
       },
     ],
     trustHeading: "Why We Built This",
