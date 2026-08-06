@@ -205,9 +205,9 @@ bottom) straight to checkout.
 ### Signature Visual Language (avoid generic node/circle-and-path diagrams — they read as "cheap" per prior feedback)
 Prefer visuals that resemble real product moments over abstract flow diagrams:
 - **Hero visual:** a "live activity feed" panel (dark card, pulsing "Live" indicator, rows of real-sounding automated actions cycling in/out, small stat footer).
-- **Automation offer visual:** a looping chat-thread mockup — automated message → customer reply → 5-star fill animation → "Posted to Google ✓" badge.
-- **Ad Optimization offer visual:** a small live dashboard — two ad variants with animated performance bars, winning variant highlighted with a badge.
-- These will likely need Tier 2/Tier 3-specific equivalents (e.g., a visual for AI receptionist, database reactivation, missed-call text-back, referral tracking) once tier pages are built — follow the same "real product moment, not abstract diagram" principle.
+- **Reputation Manager pillar visual:** a looping chat-thread mockup — automated message → customer reply → 5-star fill animation → "Posted to Google ✓" badge.
+- **Paid Ads with AI Nurturing pillar visual:** a small live dashboard — two ad variants with animated performance bars, winning variant highlighted with a badge.
+- Each of the other 5 pillars (Website Fix, Database Reactivation, Website Lead Nurturing, AI Receptionist, AI Sales Coach) will likely need its own equivalent visual over time — follow the same "real product moment, not abstract diagram" principle.
 
 ### Logo Direction (in progress, not finalized)
 - Wordmark **"AeroScale"** in two-tone treatment ("Aero" white / "Scale" cobalt) is approved and in use in the nav.
@@ -215,6 +215,7 @@ Prefer visuals that resemble real product moments over abstract flow diagrams:
 
 ## Content & Marketing Notes
 - Organic social and ad copy should stay benefit-led. Keep language niche-agnostic (no gym-specific or other vertical-specific language) since AeroScale is the general no-niche brand — vertical-specific copy belongs to future sub-agencies, not this brand.
+- **Mass cold email must comply with CAN-SPAM:** a working unsubscribe link, a physical mailing address, and a non-misleading subject line, every time. Avoid framing that implies individual research (e.g. "I noticed X on your site") in a templated mass send unless it's actually personalized per recipient.
 - Do not fabricate client results, testimonials, or specific statistics (e.g., review counts, CTR lifts) — use placeholder/template language until real numbers are provided.
 - When generating on-brand images (social posts, logos), build them precisely from the color/type tokens above using direct rendering (PIL/HTML-CSS) rather than open-ended AI image generation — prior attempts using unconstrained generation tools did not match the brand and were rejected.
 
