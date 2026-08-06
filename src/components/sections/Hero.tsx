@@ -10,7 +10,7 @@ export function Hero() {
     <section className="bg-white">
       <div className="container-page grid grid-cols-1 items-center gap-10 py-14 md:py-20 lg:grid-cols-[1.15fr_0.85fr] lg:gap-10 lg:py-24">
         <div>
-          <Eyebrow className="animate-fade-up opacity-0">SMALL BUSINESS CONSULTING + SUPPORT</Eyebrow>
+          <Eyebrow className="animate-fade-up opacity-0">SMALL BUSINESS GROWTH SYSTEM</Eyebrow>
           <h1
             className="animate-fade-up mt-4 text-[clamp(2.6rem,4.6vw,4.1rem)] leading-[1.03] font-bold tracking-[-0.02em] text-brand-slate opacity-0"
             style={{ animationDelay: "0.1s" }}
@@ -22,10 +22,10 @@ export function Hero() {
             className="animate-fade-up mt-6 max-w-lg text-lg leading-relaxed text-text-muted opacity-0"
             style={{ animationDelay: "0.2s" }}
           >
-            AeroScale helps small business owners solve problems, improve operations,
-            strengthen marketing, build better systems, understand their numbers, and complete
-            the projects that keep getting pushed aside. Get the expertise and execution support
-            you need without building every department in-house.
+            AeroScale runs the done-for-you system behind your leads, reviews, missed calls, and
+            ad performance — automated follow-up, review requests, an AI receptionist, and
+            managed ads working together so nothing falls through the cracks. Get the growth
+            system without building every department in-house.
           </p>
           <div
             className="animate-fade-up mt-8 flex flex-col gap-3 opacity-0 sm:flex-row sm:flex-wrap"
@@ -47,12 +47,6 @@ export function Hero() {
               Explore Our Services
             </Button>
           </div>
-          <p
-            className="animate-fade-up mt-4 text-sm text-text-muted opacity-0"
-            style={{ animationDelay: "0.3s" }}
-          >
-            One-time projects and ongoing support plans available.
-          </p>
         </div>
 
         <div className="animate-fade-up opacity-0" style={{ animationDelay: "0.35s" }}>

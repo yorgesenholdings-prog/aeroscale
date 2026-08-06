@@ -12,12 +12,12 @@ const columns = [
   {
     icon: PenTool,
     title: "Design",
-    description: "Create the strategy, process, system, campaign, plan, or reporting solution.",
+    description: "Configure the Full System's pillars around how your business actually runs.",
   },
   {
     icon: Hammer,
     title: "Implement",
-    description: "Help complete the work, coordinate execution, and improve the result over time.",
+    description: "Launch the system, monitor performance, and keep improving results month over month.",
   },
 ];
 
@@ -28,7 +28,7 @@ export function BusinessSupport() {
         <SectionHeading
           eyebrow="MORE THAN ADVICE"
           heading="A plan is only useful when someone moves it forward."
-          supporting="Traditional consulting often ends with recommendations. AeroScale can also help build the systems, documents, campaigns, reporting, research, and processes required to put the strategy into practice."
+          supporting="Most agencies stop at a strategy call. AeroScale builds and runs the actual system — the automations, follow-up sequences, and reporting that make the strategy real, not just a recommendation."
         />
 
         <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-3">

@@ -17,9 +17,8 @@ export function ScorecardPromo() {
                 What is holding your business back from its next stage of growth?
               </h2>
               <p className="mt-4 text-base leading-relaxed text-text-muted">
-                Complete the free Small Business Growth Scorecard to identify weaknesses and
-                opportunities across strategy, marketing, operations, systems, delegation, and
-                reporting.
+                Complete the free Small Business Growth Scorecard to see what&apos;s costing you
+                leads, reviews, and repeat business.
               </p>
             </div>
             <Button href="/growth-scorecard" size="lg" className="shrink-0">

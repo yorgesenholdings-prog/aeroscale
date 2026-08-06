@@ -22,7 +22,7 @@ const steps = [
     number: "03",
     title: "Build or Improve",
     description:
-      "We create the strategy, process, campaign, research, automation, reporting, or other solution your business needs.",
+      "We configure the pillars of the Full System your business needs — automated follow-up, review requests, an AI receptionist, and more.",
   },
   {
     number: "04",

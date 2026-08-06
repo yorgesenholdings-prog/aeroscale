@@ -12,8 +12,8 @@ const painPoints = [
   },
   {
     icon: ListTodo,
-    title: "Important projects stay unfinished",
-    copy: "Business plans, SOPs, campaigns, reporting systems, research, and automation projects remain on the owner's list for months.",
+    title: "Leads and reviews fall through the cracks",
+    copy: "Missed calls go unanswered, new leads go days without a follow-up text, and happy customers never get asked for a review — all while daily operations take priority.",
   },
   {
     icon: UserPlus,
@@ -27,8 +27,8 @@ const painPoints = [
   },
   {
     icon: LineChart,
-    title: "You are making decisions without enough information",
-    copy: "Scattered data, limited research, and unclear reporting make it harder to confidently decide where to invest time and money.",
+    title: "Old leads and past customers go untouched",
+    copy: "Dormant leads and past customers already sitting in your contact list represent real revenue, but reaching back out compliantly takes time no one has.",
   },
 ];
 
@@ -55,8 +55,8 @@ export function PainPoints() {
         </div>
 
         <p className="mt-10 max-w-3xl text-lg font-medium text-brand-slate">
-          AeroScale gives small business owners access to practical strategy, specialized
-          expertise, and hands-on implementation support.
+          AeroScale replaces the guesswork with one done-for-you growth system that runs your
+          follow-up, reviews, and ad management for you.
         </p>
       </div>
     </section>

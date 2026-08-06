@@ -20,7 +20,7 @@ export function Outcomes() {
         <SectionHeading
           eyebrow="THE GOAL"
           heading="A clearer, stronger, and easier-to-run business."
-          supporting="Our work is designed to produce useful strategies, systems, research, campaigns, reports, and completed projects—not generic advice that remains unused in a document."
+          supporting="The AeroScale Full System is built to run in the background — automated follow-up, review requests, and ad optimization that actually go live in your business, not a strategy deck that sits unused."
         />
 
         <ScrollReveal>

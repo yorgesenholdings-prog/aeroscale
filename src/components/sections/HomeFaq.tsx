@@ -6,27 +6,27 @@ const homeFaqs = [
   {
     question: "What kinds of businesses does AeroScale serve?",
     answer:
-      "AeroScale is designed primarily for small and growing businesses that need strategic, operational, marketing, research, analytical, or implementation support without building every specialty in-house.",
+      "AeroScale is built for small and growing businesses of any kind. The Full System runs the same way regardless of industry — automating your leads, reviews, and ad follow-up without you having to build a marketing or ops department in-house.",
   },
   {
     question: "Do you provide advice or complete the work?",
     answer:
-      "Both. Some engagements focus on research, strategy, and recommendations. Others include hands-on implementation, ongoing management, or coordination with the client's current team and vendors.",
+      "We complete the work. AeroScale builds, deploys, and manages the Full System in your business every month — you're not left with a strategy document to implement yourself.",
   },
   {
-    question: "Can we hire AeroScale for only one project?",
+    question: "Is this available piece by piece?",
     answer:
-      "Yes. AeroScale provides focused one-time projects as well as ongoing consulting and support plans.",
+      "No — the Full System is a single monthly offer that includes all seven pillars together. That's what makes the pricing and delivery model work; the pieces are built to reinforce each other rather than being sold as separate add-ons.",
   },
   {
     question: "How do you decide where to start?",
     answer:
-      "We evaluate the owner's goals, current problems, available resources, urgency, expected impact, and implementation difficulty before recommending a starting point.",
+      "Once you're onboarded, we sequence pillar setup based on what will move the needle fastest for your business — usually starting with whichever pillar is costing you the most leads today.",
   },
   {
     question: "Are you a marketing agency, automation company, or operations consultant?",
     answer:
-      "AeroScale combines multiple forms of small business support. The right service depends on the business problem rather than forcing every client into a single category.",
+      "AeroScale is all of those combined into one system. Rather than picking a single category, the Full System covers your website, lead follow-up, reviews, missed calls, sales coaching, your existing customer list, and ad management together.",
   },
   {
     question: "Do you replace accountants, attorneys, or other licensed professionals?",
