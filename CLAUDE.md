@@ -4,9 +4,9 @@ This file gives context for any Claude instance (chat or Claude Code) working on
 
 ## What AeroScale Is
 
-AeroScale is a small-business growth agency built around a **productized, tiered system** rather than an à la carte service catalog. It positions itself as an alternative to hiring full in-house departments — owners get a done-for-you growth system instead of stitching together separate hires or vendors. Live site: https://getaeroscale.com/
+AeroScale is a small-business growth agency built around a **single, productized system** rather than an à la carte service catalog or a multi-tier ladder. It positions itself as an alternative to hiring full in-house departments — owners get a done-for-you growth system instead of stitching together separate hires or vendors. Live site: https://getaeroscale.com/
 
-**Strategic direction (as of this pivot):** AeroScale stays a general, no-niche brand. The 3-tier system below is the core offer for every client regardless of industry. The long-term plan is to eventually spin up niche-specific **sub-agencies** that reuse this same tier structure and delivery system with different front-end branding/copy — the tiers and delivery mechanics stay constant; only positioning changes per sub-agency. Do not build niche-specific assumptions into the core system unless explicitly told a sub-agency is being built.
+**Strategic direction (as of this pivot):** AeroScale stays a general, no-niche brand. The single AeroScale Full System offer below is the core offer for every client regardless of industry. The long-term plan is to eventually spin up niche-specific **sub-agencies** that reuse this same pillar structure and delivery system with different front-end branding/copy — the pillars and delivery mechanics stay constant; only positioning changes per sub-agency. Do not build niche-specific assumptions into the core system unless explicitly told a sub-agency is being built.
 
 ## Delivery Constraints (apply to everything below)
 
@@ -14,69 +14,77 @@ AeroScale is a small-business growth agency built around a **productized, tiered
 - **No setup fee.** Once a system is built once, it's copy-paste to new clients — the pricing below assumes near-zero marginal setup cost per client.
 - **Usage costs (SMS sends, AI voice minutes, phone numbers) are billed separately to clients**, not absorbed into the flat monthly price. This keeps margin predictable regardless of client volume.
 
-## The 3-Tier System (current core offer)
+## The Full System Offer (current core offer)
 
-### Tier 1 — Foundation — $499/month
-The low-commitment entry point. Proves value fast, lowest delivery complexity.
-- Review Follow-Up & Review Response Automation (see standalone offer details below)
-- Campaign Management (ads running + optimized — see Ad Optimization standalone offer below)
-- **Missed Call Text-Back** — automatically texts anyone whose call goes unanswered, so no inbound lead goes silent.
-  - Included: automatic SMS trigger on any missed inbound call, customizable text template, immediate (near-instant) send, routes into the same GHL contact/lead record as everything else, basic reporting (missed calls captured, response rate).
-  - Not included: calling the lead back, or handling the conversation beyond the initial text (that escalates into Tier 2's AI Lead Nurturing or Tier 3's AI Receptionist).
-  - **This is exclusive to the tier — not sold as a standalone offer** — it's part of what makes Tier 1 worth choosing over buying the two standalone offers separately, not just a price discount.
-- Effectively a bundle of AeroScale's two standalone offers (at a discount vs. buying separately) plus one tier-exclusive automation.
+**One offer, one price, no tiers, no à la carte products.** The price is config-driven —
+`src/config/offer.ts`'s `offerPricing` object is the single source of truth, read by the promo
+banner, `/pricing`, the homepage teaser, and both `/lp/*` pages. Never hardcode the price
+anywhere else.
 
-### Tier 2 — Growth System — $999/month
-Everything in Tier 1, plus:
+- **Standard price:** $2,500/month.
+- **Current limited-time price:** $1,199/month (struck-through against the standard price
+  site-wide while `offerPricing.promoActive` is `true`). No countdown/expiration logic — the
+  promo stays live until someone flips that one boolean off.
+- No setup fee (see Delivery Constraints above — unchanged). Usage costs billed separately
+  (unchanged).
 
-**Database Reactivation** — re-engages a client's existing contacts (old leads, inactive/canceled customers) to generate fast bookings before any ad spend. **See compliance policy below before this is built or sold.**
-- Included: contact list import, consent audit against the compliance policy below, one written offer/sequence built per list, campaign deployment, **monthly re-run against newly-inactive contacts** (rolling, not a single blast), basic results reporting (sends, opens/clicks, bookings).
-- Not included: guaranteed response/booking rates, legal review of the client's historical consent records (client confirms; AeroScale applies the policy but doesn't audit their paperwork), cleaning a genuinely unusable list (flag as a separate one-time upsell if needed).
+This system is internally adapted from a validated agency framework (internal reference name:
+"Aristotle System") — **never use that name anywhere client-facing.** Client-facing, it's always
+"the AeroScale Full System" or "the Full System."
 
-**AI Lead Nurturing** — instant automated response to new inbound leads, with follow-up until the lead books or opts out. The value driver is speed-to-lead, not message content quality.
-- Included: auto-response target under 5 minutes via SMS/email, automated follow-up sequence (e.g., day 1/3/7 touches) for non-responders, automated booking handoff, escalation notification to client/staff when a lead is ready or needs a human.
-- Not included: live human chat (this is automated messaging, not a staffed inbox), lead generation itself (nurtures leads the client already has — pairs with but is separate from the Ad Optimization offer).
+### The 7 Pillars
 
-### Tier 3 — Full System — $2,199/month
-Everything above, plus:
+All copy below is a draft — edit freely in `src/config/offer.ts`, the single source of truth for
+pillar name/headline/body/build-status/included/not-included content.
 
-**AI Receptionist/Intake** — AI voice on the client's business line, handling missed calls, FAQs, and automatic consult booking.
-- Included: AI voice on client's existing number or a new tracking number (client's choice), custom FAQ script from client-provided info (capped around 15 topics to keep setup templated), automatic calendar booking, required AI-disclosure language where the client's state mandates it, monthly call volume/summary reporting.
-- Not included: handling complex/sensitive calls (billing disputes, complaints — these fall back to a message or human transfer, not AI resolution), custom voice/personality design beyond AeroScale's standard options, 24/7 live human backup.
+Each pillar carries a build-status badge on-site — **"Live"** (built, running for clients today)
+or **"Rolling Out"** (partial or not-yet-built, but included in the price from day one, no
+separate charge when it launches). Show all 7 pillars now; never hide an unbuilt one, but never
+imply something is live today when it isn't — that's what the badge is for.
 
-**Full Remarketing Sequences** — multi-touch re-engagement across the *entire* funnel, distinct from Tier 2's short-term new-lead nurture: cold leads who never converted, past customers who haven't returned, and ad/site visitors who didn't convert.
-- Included: cold-lead re-engagement sequences, post-purchase/repeat-business sequences, coordination with the Ad Optimization retargeting audience, quarterly sequence refresh (updated offers/messaging, not left on autopilot indefinitely).
-- Not included: new ad creative for remarketing (same boundary as the core Ad Optimization offer — existing creative is reused/retargeted, not redesigned).
-- **On the site, distinguish this clearly from Tier 2's AI Lead Nurturing** (new leads, short-term) to avoid reading as redundant — a simple funnel-stage visual works well here.
+1. **Website Fix** — *"A Website That Actually Converts."* Faster mobile load times and a
+   low-friction opt-in in place of a bare contact form. **Status: Rolling Out — not yet built.**
+2. **Database Reactivation** — *"Wake Up Your Old Leads."* Automatically re-engages dormant
+   leads and past customers already in a client's list, with compliant win-back campaigns.
+   **Status: Live** (carried over from the old Tier 2 component of the same name). **See the
+   Compliance Policy below before this is built or sold for any client, in any niche.**
+3. **Reputation Manager** — *"Reviews On Autopilot."* Every completed job automatically triggers
+   a review request, with auto-response and a referral loop turning happy customers into new
+   business. **Status: Rolling Out** — review follow-up and auto-response are live today;
+   referral link tracking and incentive mechanics are still being built.
+   **Never implement "review gating"** (routing low-star ratings away from public platforms,
+   only pushing high stars to Google) — this violates Google's review policy (enforced since
+   April 2026) and the FTC's Consumer Review Rule (16 CFR Part 465). Every customer gets the
+   same public review request regardless of rating, and every review gets the same standard
+   automated response regardless of rating — no differential treatment on either side, for every
+   client, in every niche. Responses are auto-posted, not held for client approval; reviews
+   needing a real resolution (e.g. a complaint) should be followed up on by the client directly,
+   not through the automated reply.
+4. **Website Lead Nurturing** — *"Never Lose A Lead To Silence."* Instant automated response to
+   new leads with ongoing follow-up until they book. **Status: Rolling Out** — instant follow-up
+   and booking handoff are live today; automatically rescuing appointments before a no-show is
+   still being built.
+5. **AI Receptionist** — *"Someone's Always Answering."* Missed calls get an instant text-back;
+   an AI voice line handles FAQs and books consults, even after hours. **Status: Live** (carried
+   over from the old Tier 1 missed-call-text-back plus the old Tier 3 AI voice receptionist).
+   Note: some states require disclosure that a caller is interacting with an AI, not a human —
+   confirm applicable state rules before deploying to a client in a new state.
+6. **AI Sales Coach** — *"Sharper Sales Conversations."* The team practices real call scenarios
+   and gets objective grading feedback. **Status: Rolling Out — not yet built.**
+7. **Paid Ads with AI Nurturing** — *"Ads That Get Managed, Not Just Launched."* Ongoing
+   optimization of a client's existing ad campaigns — targeting, messaging, A/B testing — tied
+   into the nurturing system above. **Status: Live** (carried over from the old standalone Ad
+   Optimization offer). Does NOT include ad creative design/production or building a campaign
+   from scratch — keep this exclusion explicit in any copy describing this pillar.
 
-**Coaching/Consulting** — direct strategic input layered on top of the automated systems. Low incremental delivery cost since it draws on AeroScale's own expertise, but it's the one component that scales with personal time, not automation — watch this against total Tier 3 client count.
-- Included: recurring monthly 1:1 call (30–45 min) reviewing performance across all systems and general growth advice, async access for quick questions between calls (reasonable response window, not real-time on-call).
-- Not included: hands-on implementation outside existing system scope (not a hiring, financial, or legal advisor), guaranteed outcomes tied to advice given.
+### Onboarding Requirements
 
-**Referral Program Automation** — turns happy current customers into a growth channel, the counterpart to Tier 2's Database Reactivation (which mines lapsed customers) — Tier 3 rounds this out with the full-funnel story: new leads, lapsed customers, *and* referrals from active ones.
-- Included: automated referral ask (triggered off a schedule or a positive event, e.g., X days after a completed job), unique referral link/code per customer for tracking, notification to the client when a referral converts, basic reporting (asks sent, referrals generated, conversions).
-- Not included: reward/incentive fulfillment — AeroScale tracks and automates the ask/attribution, but the client handles actually giving out the discount/gift; designing complex multi-tier incentive structures beyond one standard offer.
+One list, not scaled by tier (there's only one offer): client's Google Business listing access,
+existing ad account access, existing contact list, written confirmation of that list's consent
+status (see compliance policy below), business phone number access, FAQ content for the AI
+receptionist script.
 
-Note: some states require disclosure that a caller is interacting with an AI, not a human — confirm applicable state rules before deploying the AI Receptionist to a client in a new state.
-
-### Updated tier contents summary
-- **Tier 1 ($499/mo):** Review Follow-Up & Review Response Automation + Ad Optimization Service + Missed Call Text-Back
-- **Tier 2 ($999/mo):** everything in Tier 1 + Database Reactivation + AI Lead Nurturing
-- **Tier 3 ($2,199/mo):** everything in Tier 2 + AI Receptionist/Intake + Full Remarketing Sequences + Coaching/Consulting + Referral Program Automation
-
-### Standalone Offers (still sold independently, also form the base of Tier 1)
-- **Review Follow-Up & Review Response Automation** — $200/month. Builds and maintains an automated workflow that asks every customer for a review after a completed job, **plus an automated public response posted to every review as it comes in** (positive or negative). **Never implement "review gating"** (routing low-star ratings away from public platforms, only pushing high stars to Google) — this violates Google's review policy (enforced since April 2026) and the FTC's Consumer Review Rule (16 CFR Part 465). Every customer gets the same public review request regardless of rating, and every review gets the same standard automated response regardless of rating — no differential treatment on either side of this offer, in every tier, for every client, in every niche. Responses are auto-posted, not held for client approval; reviews needing a real resolution (e.g. a complaint) should be followed up on by the client directly, not through the automated reply.
-- **Ad Optimization Service** — $400/month. Client already has an ad campaign with their own creative; AeroScale optimizes audience targeting, ad copy/messaging, and campaign settings, plus ongoing A/B testing and monthly reporting. Does NOT include ad creative design/production or building a campaign from scratch — make this exclusion explicit in any copy describing the offer.
-- **Missed Call Text-Back is NOT part of this standalone list** — see Tier 1 above. It is tier-exclusive only, never sold à la carte.
-
-### Onboarding Requirements (scale with tier)
-- **Tier 1:** minimal — client's Google Business listing access, existing ad account access.
-- **Tier 2 adds:** client's existing contact list, plus written confirmation of their consent status for that list (see compliance policy).
-- **Tier 3 adds:** business phone number access, FAQ content for the AI receptionist script.
-
-List these clearly per tier on the pricing page so prospects know upfront what they need to provide.
-
-## Compliance Policy — Database Reactivation (Tier 2+)
+## Compliance Policy — Database Reactivation (Pillar 2)
 
 **This is the highest-risk piece of the system and applies to every client in every niche. Read before building or selling this.**
 
@@ -102,21 +110,50 @@ Since every client runs through AeroScale's own GHL instance, AeroScale's own A2
 
 All old URLs (`/services/projects/*`, `/services/support/*`, `/bundles`, `/instant-quote`) 308-redirect to `/pricing` (see `next.config.ts`).
 
-**The 3-tier system (Foundation / Growth System / Full System) plus the two standalone offers (Review Follow-Up & Review Response Automation, Ad Optimization Service) are now the entire service offering.** Do not reference, link to, or resurrect the old catalog/bundles/instant-quote anywhere on the site — nav, footer, sitemap, or internal links.
+**The 3-tier system (Foundation / Growth System / Full System) plus the two standalone offers (Review Follow-Up & Review Response Automation, Ad Optimization Service) were the entire service offering — see the next section for what replaced them.** Do not reference, link to, or resurrect the old catalog/bundles/instant-quote anywhere on the site — nav, footer, sitemap, or internal links.
+
+## Retired: The 3-Tier System and Standalone Offers
+
+**Decision confirmed — the 3-tier system and the two standalone offers are retired, replaced by
+the single Full System offer above.** As of this pivot, the following are no longer sold or
+referenced as products:
+- The Foundation ($499/mo), Growth System ($999/mo), and Full System ($2,199/mo) tiers
+- The Review Follow-Up & Review Response Automation ($200/mo) and Ad Optimization Service
+  ($400/mo) standalone offers as separately-purchasable products (their capabilities live on as
+  pillars 3 and 7 of the Full System, and their `/lp/*` ad landing pages stay live — see below)
+
+Old `/onboarding/foundation`, `/onboarding/growth-system`, `/onboarding/full-system`,
+`/onboarding/automation`, and `/onboarding/marketing-management` URLs 308-redirect to the single
+`/onboarding` route (see `next.config.ts`). Do not reference, link to, or resurrect the 3-tier or
+standalone-offer model anywhere on the site — nav, footer, sitemap, or internal links.
 
 ## Ad Landing Pages (Ad Traffic Only — Not Linked From Main Site)
 
-Unaffected by this pivot — still built around the two standalone offers:
-- `/lp/automation` — Review Follow-Up & Review Response Automation, **$200/month only** (no tiers, no setup fee). No site nav/footer, noindex, excluded from sitemap.
-- `/lp/marketing-management` — Ad Optimization Service, **$400/month only**, single campaign + A/B testing on an existing ad (not ad creation). Same no-nav/noindex rules.
+Both URLs stay live (real Meta ad traffic is pointed at them) but now sell the single Full System
+offer instead of their original standalone products:
+- `/lp/automation` — hooks on **pillar 3, Reputation Manager**. No site nav/footer, noindex,
+  excluded from sitemap.
+- `/lp/marketing-management` — hooks on **pillar 7, Paid Ads with AI Nurturing**. Same
+  no-nav/noindex/excluded-from-sitemap rules.
 
-Each landing page includes: benefit headline matching ad copy, problem framing, plain pricing, 3-step "how it works," a clear "What's Included / Not Included" section, a short FAQ addressing objections, a trust/credibility section, and one repeated CTA (top/middle/bottom) to a contact form or booking calendar.
+Each page leads with a "Spotlight" on its specific hook pillar (so the page still matches
+whatever the ad promised), then presents the same price, pillar list, and included/not-included
+breakdown as `/pricing` — the two pages and `/pricing` share the same `PillarDetailAccordion`
+component specifically so they can't drift apart on what's actually included. Updating the ad
+creative/copy that drives traffic to these URLs (it currently still promises the old $200/$400
+standalone pricing) is a separate, not-yet-done task — flag it, don't assume it's handled.
+
+Each landing page includes: benefit headline matching its hook pillar, problem framing, plain
+pricing, a spotlight on the hook pillar, the shared "What's Included / Not Included" breakdown, a
+short FAQ addressing objections, a trust/credibility section, and one repeated CTA (top/middle/
+bottom) straight to checkout.
 
 ## Other Site Features
 - **Blog** at `/blog`: standard listing layout (title, excerpt, date, read more), structure in place even before posts exist.
-- **Homepage:** Hero → "The AeroScale System" (condensed 3-tier summary, links to `/pricing`) → "Why Owners Call Us" → rest of page.
-- **`/services`:** trimmed to just the two standalone offers + a short FAQ — the lighter, non-tier entry point.
-- **`/pricing`:** the 3-tier system's home page, fully built — header, three tier cards (dark-card treatment on Growth System), a per-tier "See full details" accordion (included/not-included breakdowns, reusing the standalone offers' data from `config/landing-pages.ts` for Tier 1's two non-exclusive pieces), an onboarding-requirements-by-tier section, a "prefer to start smaller" section linking to `/services` (never directly to `/lp/*` — those are ad-only), a 5-question FAQ, and a closing CTA. Data lives in `config/pricing-tiers.ts` and `config/pricing-tier-details.ts`.
+- **Homepage:** Hero → "The AeroScale System" (single-offer teaser, links to `/pricing`) → "Why Owners Call Us" → rest of page.
+- **`/services`:** repurposed as a general, non-pricing "what we do" overview of all 7 pillars — no products, no pricing shown, links to `/pricing` for detail/price/CTA.
+- **`/pricing`:** the Full System's home page, fully built — header, a single offer card (struck-through price, condensed pillar list with Live/Rolling Out badges, checkout CTA), a `PillarDetailAccordion` (included/not-included breakdown per pillar), a single onboarding-requirements list, a FAQ, and a closing CTA. Data lives in `config/offer.ts` (pillars, pricing, the offer itself) and `config/landing-pages.ts` (the two `/lp/*` pages' hook copy only).
+- **`/onboarding`:** single static route (no per-plan slug — there's only one plan). Data lives in `config/offer.ts`.
 
 ## Visual Design System
 
@@ -134,6 +171,21 @@ Each landing page includes: benefit headline matching ad copy, problem framing, 
 | Body/secondary text | `#5B5F6B` |
 | Muted/border text | `#A8ACB8` |
 | White | `#FFFFFF` |
+
+### Limited-Time Offer Banner
+- Site-wide, mounted in `src/app/layout.tsx` directly (not inside `SiteChrome`) so it renders
+  unconditionally on every route, including `/lp/*` — above the nav, not sticky.
+- Background: `bg-brand-slate` (`#14141A`), matching Footer's dark treatment.
+- **Contrast rule (already established elsewhere in this codebase):** raw cobalt
+  (`text-teal-text` / `#3E63F0`) only reaches ~3.7:1 contrast on the dark ink background —
+  reserved for large text. Price and link text on the banner use `text-teal-on-slate`
+  (`#A6B8FB`) instead, same as every other dark-surface cobalt usage on this site.
+- Dismissible via an X button; dismissal persists in `localStorage`
+  (`aeroscale_promo_banner_dismissed`); no expiration/countdown logic — reappears if the browser's
+  storage is cleared, that's fine.
+- Price is always sourced from `offerPricing` in `config/offer.ts`, never hardcoded — flipping
+  `offerPricing.promoActive` to `false` removes the banner site-wide and drops the strikethrough
+  on every other price display at the same time.
 
 ### Typography
 - **Display/headlines:** Space Grotesk (Bold), tight letter-spacing, oversized clamp()-based sizing
@@ -167,4 +219,4 @@ Prefer visuals that resemble real product moments over abstract flow diagrams:
 - When restructuring site pages, always confirm current file/folder structure before making changes.
 - When a request could be read multiple ways (e.g., "add pricing" — tiered vs. flat), state the assumption and confirm before building rather than guessing silently.
 - Flag legal/compliance concerns (like review gating or TCPA/SMS consent) proactively rather than only on request.
-- This project has undergone one major pivot already (18-service catalog → 3-tier system). When in doubt about whether something reflects the old model or the new one, ask rather than assume.
+- This project has undergone two major pivots (18-service catalog → 3-tier system → single Full System offer). When in doubt about whether something reflects an old model or the current one, ask rather than assume.

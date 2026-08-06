@@ -1,7 +1,6 @@
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/config/site";
 import { blogPosts } from "@/config/blog";
-import { onboardingEntries } from "@/config/onboarding";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
@@ -14,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${siteConfig.url}/blog`, lastModified: now, changeFrequency: "weekly", priority: 0.7 },
     { url: `${siteConfig.url}/contact`, lastModified: now, changeFrequency: "yearly", priority: 0.7 },
     { url: `${siteConfig.url}/growth-scorecard`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${siteConfig.url}/onboarding`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
     { url: `${siteConfig.url}/privacy`, lastModified: now, changeFrequency: "yearly", priority: 0.2 },
     { url: `${siteConfig.url}/terms`, lastModified: now, changeFrequency: "yearly", priority: 0.2 },
   ];
@@ -25,12 +25,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  const onboardingRoutes: MetadataRoute.Sitemap = onboardingEntries.map((entry) => ({
-    url: `${siteConfig.url}/onboarding/${entry.slug}`,
-    lastModified: now,
-    changeFrequency: "yearly",
-    priority: 0.3,
-  }));
-
-  return [...staticRoutes, ...blogRoutes, ...onboardingRoutes];
+  return [...staticRoutes, ...blogRoutes];
 }

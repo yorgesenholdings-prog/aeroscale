@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { SiteChrome } from "@/components/layout/SiteChrome";
+import { PromoBanner } from "@/components/layout/PromoBanner";
 import { JsonLd, organizationJsonLd, websiteJsonLd } from "@/components/seo/JsonLd";
 import { UtmCapture } from "@/components/analytics/UtmCapture";
 import { siteConfig } from "@/config/site";
@@ -90,6 +91,7 @@ fbq('track', 'PageView');`,
         >
           Skip to main content
         </a>
+        <PromoBanner />
         <SiteChrome>{children}</SiteChrome>
       </body>
     </html>
