@@ -5,7 +5,6 @@ import { LandingPageHeader } from "@/components/lp/LandingPageHeader";
 import { LandingPageLeadForm } from "@/components/lp/LandingPageLeadForm";
 import { CheckoutButton } from "@/components/checkout/CheckoutButton";
 import { OfferPriceDisplay } from "@/components/offer/OfferPriceDisplay";
-import { PillarStatusBadge } from "@/components/offer/PillarStatusBadge";
 import { PillarDetailAccordion } from "@/components/offer/PillarDetailAccordion";
 import { ChatSequenceVisual } from "@/components/sections/ChatSequenceVisual";
 import { AdOptimizationDashboardVisual } from "@/components/sections/AdOptimizationDashboardVisual";
@@ -55,14 +54,10 @@ export function LandingPageTemplate({ content }: { content: LandingPageContent }
           <div className="container-page max-w-2xl">
             <div className="flex flex-col gap-8 sm:flex-row sm:items-center">
               <div className="flex-1">
-                <PillarStatusBadge status={hookPillar.buildStatus} />
-                <h2 className="mt-3 text-[clamp(1.6rem,2.6vw,2.2rem)] leading-[1.15] font-bold tracking-[-0.01em] text-brand-slate">
+                <h2 className="text-[clamp(1.6rem,2.6vw,2.2rem)] leading-[1.15] font-bold tracking-[-0.01em] text-brand-slate">
                   {hookPillar.headline}
                 </h2>
                 <p className="mt-3 text-base leading-relaxed text-text-muted">{hookPillar.body}</p>
-                {hookPillar.rollingOutNote && (
-                  <p className="mt-3 text-sm text-text-muted italic">{hookPillar.rollingOutNote}</p>
-                )}
               </div>
               {SpotlightVisual && (
                 <div className="flex-1">

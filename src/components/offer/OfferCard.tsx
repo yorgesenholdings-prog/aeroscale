@@ -1,7 +1,6 @@
 import { Check } from "lucide-react";
 import { CheckoutButton } from "@/components/checkout/CheckoutButton";
 import { OfferPriceDisplay } from "@/components/offer/OfferPriceDisplay";
-import { PillarStatusBadge } from "@/components/offer/PillarStatusBadge";
 import { offer, pillars } from "@/config/offer";
 
 interface OfferCardProps {
@@ -25,12 +24,9 @@ export function OfferCard({ ctaLabel, ctaHref }: OfferCardProps) {
 
       <ul className="mt-6 flex-1 space-y-3">
         {pillars.map((pillar) => (
-          <li key={pillar.slug} className="flex items-center justify-between gap-3 text-sm text-white">
-            <span className="flex items-start gap-2.5">
-              <Check size={17} aria-hidden="true" className="mt-0.5 shrink-0 text-teal-on-slate" />
-              {pillar.name}
-            </span>
-            <PillarStatusBadge status={pillar.buildStatus} tone="dark" />
+          <li key={pillar.slug} className="flex items-start gap-2.5 text-sm text-white">
+            <Check size={17} aria-hidden="true" className="mt-0.5 shrink-0 text-teal-on-slate" />
+            {pillar.name}
           </li>
         ))}
       </ul>

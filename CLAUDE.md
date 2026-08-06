@@ -37,10 +37,13 @@ This system is internally adapted from a validated agency framework (internal re
 All copy below is a draft — edit freely in `src/config/offer.ts`, the single source of truth for
 pillar name/headline/body/build-status/included/not-included content.
 
-Each pillar carries a build-status badge on-site — **"Live"** (built, running for clients today)
-or **"Rolling Out"** (partial or not-yet-built, but included in the price from day one, no
-separate charge when it launches). Show all 7 pillars now; never hide an unbuilt one, but never
-imply something is live today when it isn't — that's what the badge is for.
+**Build status is tracked internally only — do not show "Live"/"Rolling Out" (or any other
+build-status language) anywhere on the site.** All 7 pillars are presented publicly as available,
+with no distinction between built and not-yet-built. This is a deliberate choice: the plan is to
+have the remaining pillars actually built out before/as real client delivery happens, and the
+site shouldn't undercut sales conversations by publicly flagging what isn't finished yet. The
+`buildStatus`/`rollingOutNote` fields in `src/config/offer.ts` still exist as internal tracking
+for whoever's building this out — just never surfaced in any UI.
 
 1. **Website Fix** — *"A Website That Actually Converts."* Faster mobile load times and a
    low-friction opt-in in place of a bare contact form. **Status: Rolling Out — not yet built.**
@@ -152,7 +155,7 @@ bottom) straight to checkout.
 - **Blog** at `/blog`: standard listing layout (title, excerpt, date, read more), structure in place even before posts exist.
 - **Homepage:** Hero → "The AeroScale System" (single-offer teaser, links to `/pricing`) → "Why Owners Call Us" → rest of page.
 - **`/services`:** repurposed as a general, non-pricing "what we do" overview of all 7 pillars — no products, no pricing shown, links to `/pricing` for detail/price/CTA.
-- **`/pricing`:** the Full System's home page, fully built — header, a single offer card (struck-through price, condensed pillar list with Live/Rolling Out badges, checkout CTA), a `PillarDetailAccordion` (included/not-included breakdown per pillar), a single onboarding-requirements list, a FAQ, and a closing CTA. Data lives in `config/offer.ts` (pillars, pricing, the offer itself) and `config/landing-pages.ts` (the two `/lp/*` pages' hook copy only).
+- **`/pricing`:** the Full System's home page, fully built — header, a single offer card (struck-through price, condensed pillar list, checkout CTA), a `PillarDetailAccordion` (included/not-included breakdown per pillar), a single onboarding-requirements list, a FAQ, and a closing CTA. Data lives in `config/offer.ts` (pillars, pricing, the offer itself) and `config/landing-pages.ts` (the two `/lp/*` pages' hook copy only).
 - **`/onboarding`:** single static route (no per-plan slug — there's only one plan). Data lives in `config/offer.ts`.
 
 ## Visual Design System

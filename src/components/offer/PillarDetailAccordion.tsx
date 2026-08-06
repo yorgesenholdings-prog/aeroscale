@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { Check, ChevronDown, X } from "lucide-react";
 import { pillars, type OfferPillarSlug } from "@/config/offer";
-import { PillarStatusBadge } from "@/components/offer/PillarStatusBadge";
 
 /** Shared included/not-included breakdown, reused on /pricing and both /lp pages so they can never drift apart. */
 export function PillarDetailAccordion() {
@@ -27,10 +26,7 @@ export function PillarDetailAccordion() {
                 onClick={() => setOpenSlug(isOpen ? null : pillar.slug)}
                 className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
               >
-                <span className="flex items-center gap-3">
-                  <span className="font-display text-lg font-semibold text-brand-slate">{pillar.name}</span>
-                  <PillarStatusBadge status={pillar.buildStatus} />
-                </span>
+                <span className="font-display text-lg font-semibold text-brand-slate">{pillar.name}</span>
                 <ChevronDown
                   size={18}
                   aria-hidden="true"
@@ -40,9 +36,6 @@ export function PillarDetailAccordion() {
             </h3>
             {isOpen && (
               <div id={panelId} role="region" aria-labelledby={buttonId} className="space-y-4 px-6 pb-8">
-                {pillar.rollingOutNote && (
-                  <p className="text-sm leading-relaxed text-text-muted italic">{pillar.rollingOutNote}</p>
-                )}
                 <div className="grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-2">
                   <ul className="space-y-2">
                     {pillar.included.map((item) => (

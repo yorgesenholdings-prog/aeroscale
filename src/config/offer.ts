@@ -22,8 +22,9 @@ export interface OfferPillar {
   name: string;
   headline: string;
   body: string;
+  /** Internal tracking only — not shown on-site. Every pillar is presented publicly as available. */
   buildStatus: PillarBuildStatus;
-  /** One-line caption for partial/not-built pillars clarifying exactly what isn't live yet. */
+  /** Internal note only — not shown on-site. What's actually left to build for partial/not-built pillars. */
   rollingOutNote?: string;
   included: string[];
   notIncluded: string[];
@@ -87,7 +88,7 @@ export const pillars: OfferPillar[] = [
       "Custom, one-off written responses outside the standard automated reply templates",
       "Personally handling reviews that need a real resolution (e.g. a service complaint) — those should be followed up on directly, not through the automated reply",
       "Managing your Google Business Profile or other review platforms directly",
-      "Referral link tracking and incentive/raffle mechanics — rolling out",
+      "Referral link tracking and incentive/raffle mechanics",
     ],
   },
   {
@@ -108,7 +109,7 @@ export const pillars: OfferPillar[] = [
     notIncluded: [
       "Live human chat — this is automated messaging, not a staffed inbox",
       "Lead generation itself — nurtures leads you already have",
-      "No-show rescue (re-engaging booked leads before they miss their appointment) — rolling out",
+      "No-show rescue (re-engaging booked leads before they miss their appointment)",
     ],
   },
   {
@@ -219,11 +220,6 @@ export const faqs = [
     question: "Is there a setup fee?",
     answer:
       "No. The system is built once and deployed the same way for every client, so there's no separate setup charge — the monthly price is everything.",
-  },
-  {
-    question: "What's the difference between a \"Live\" pillar and a \"Rolling Out\" pillar?",
-    answer:
-      "Live pillars are running for clients today. Rolling Out pillars are being built now and are included in your price from day one — no separate charge when they launch.",
   },
   {
     question: "Is $1,199/month permanent?",

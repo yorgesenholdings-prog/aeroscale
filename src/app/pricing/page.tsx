@@ -46,11 +46,7 @@ export default function PricingPage() {
 
       <section className="bg-white py-16 md:py-24">
         <div className="container-page max-w-3xl">
-          <SectionHeading
-            eyebrow="THE 7 PILLARS"
-            heading="What's included"
-            supporting="Live pillars are running for clients today. Rolling Out pillars are being built now and are included in your price from day one — no separate charge when they launch."
-          />
+          <SectionHeading eyebrow="THE 7 PILLARS" heading="What's included" />
           <ScrollReveal className="mt-10">
             <PillarDetailAccordion />
           </ScrollReveal>
